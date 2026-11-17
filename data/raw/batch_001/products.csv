@@ -1,0 +1,501 @@
+product_id,product_name,category,subcategory,brand,unit_cost,list_price
+P000001,Northstar Fitness Model 0001,Sports,Outdoor,HomePro,171.16,213.95
+P000002,BrightHouse Educational Model 0002,Toys,Outdoor Toys,HomePro,332.71,402.58
+P000003,NovaTech Furniture Model 0003,Home & Kitchen,Kitchenware,Apex,129.13,232.43
+P000004,BrightHouse Technology Model 0004,Books,Education,UrbanStyle,9.10,16.02
+P000005,Everyday Outdoor Model 0005,Sports,Fitness,Northstar,260.22,533.45
+P000006,NovaTech Makeup Model 0006,Beauty,Skincare,Vertex,466.64,802.62
+P000007,Luma Fiction Model 0007,Books,Education,Apex,67.30,148.06
+P000008,Everyday Skincare Model 0008,Beauty,Makeup,Vertex,266.92,416.40
+P000009,Vertex Sportswear Model 0009,Sports,Outdoor,ActiveLife,190.92,341.75
+P000010,Everyday Kitchenware Model 0010,Home & Kitchen,Decoration,Vertex,415.19,626.94
+P000011,BrightHouse Educational Model 0011,Toys,Educational,ActiveLife,102.34,211.84
+P000012,ActiveLife Audio Model 0012,Electronics,Audio,ActiveLife,44.55,58.81
+P000013,Apex Outdoor Model 0013,Sports,Fitness,Luma,239.14,435.23
+P000014,UrbanStyle Makeup Model 0014,Beauty,Skincare,UrbanStyle,348.91,432.65
+P000015,Apex Laptops Model 0015,ELECTRONICS,Accessories,NovaTech,182.26,220.53
+P000016,Everyday Technology Model 0016,Books,Education,Everyday,333.84,584.22
+P000017,Apex Haircare Model 0017,Beauty,Haircare,BrightHouse,343.32,710.67
+P000018,BrightHouse Shoes Model 0018,Clothing,Accessories,NovaTech,415.00,659.85
+P000019,Luma Fiction Model 0019,Books,Technology,Luma,208.87,398.94
+P000020,NovaTech Audio Model 0020,electronics ,Laptops,Apex,301.59,506.67
+P000021,Vertex Outdoor Model 0021,Sports,Fitness,Luma,495.82,679.27
+P000022,Everyday Haircare Model 0022,Beauty,Haircare,Luma,451.18,924.92
+P000023,Vertex Furniture Model 0023,Home & Kitchen,Kitchenware,HomePro,268.82,537.64
+P000024,NovaTech Haircare Model 0024,Beauty,Skincare,UrbanStyle,151.46,304.43
+P000025,Vertex Accessories Model 0025,Clothing,Accessories,UrbanStyle,426.67,499.20
+P000026,Northstar Furniture Model 0026,Home & Kitchen,Furniture,Apex,234.37,307.02
+P000027,ActiveLife Educational Model 0027,Toys,Educational,HomePro,71.77,138.52
+P000028,ActiveLife Women Model 0028,Clothing,Shoes,BrightHouse,287.04,401.86
+P000029,NovaTech Outdoor Toys Model 0029,Toys,Outdoor Toys,Apex,102.41,180.24
+P000030,Luma Women Model 0030,Clothing,Accessories,BrightHouse,492.49,728.89
+P000031,Vertex Men Model 0031,Clothing,Women,Vertex,144.54,211.03
+P000032,UrbanStyle Games Model 0032,Toys,Games,HomePro,265.46,430.05
+P000033,HomePro Smartphones Model 0033,Electronics,Audio,Vertex,256.34,561.38
+P000034,BrightHouse Decoration Model 0034,Home & Kitchen,Kitchenware,Luma,346.03,560.57
+P000035,Luma Sportswear Model 0035,Sports,Fitness,ActiveLife,13.11,28.71
+P000036,ActiveLife Outdoor Model 0036,Sports,Fitness,ActiveLife,103.80,173.35
+P000037,Luma Accessories Model 0037,Electronics,Audio,Luma,225.32,396.56
+P000038,Vertex Education Model 0038,Books,Fiction,Northstar,435.71,766.85
+P000039,UrbanStyle Accessories Model 0039,Electronics,Laptops,Northstar,410.99,649.36
+P000040,HomePro Laptops Model 0040,Electronics,Smartphones,Northstar,378.90,682.02
+P000041,Everyday Makeup Model 0041,Beauty,Haircare,Apex,130.63,210.31
+P000042,BrightHouse Education Model 0042,Books,Education,NovaTech,312.47,549.95
+P000043,Everyday Outdoor Toys Model 0043,Toys,Games,Northstar,495.79,639.57
+P000044,Apex Outdoor Model 0044,Sports,Fitness,BrightHouse,118.56,238.31
+P000045,Vertex Laptops Model 0045,Electronics,Accessories,NovaTech,236.49,425.68
+P000046,Vertex Outdoor Model 0046,Sports,Fitness,UrbanStyle,418.64,598.66
+P000047,Northstar Games Model 0047,Toys,Outdoor Toys,Apex,186.77,321.24
+P000048,ActiveLife Sportswear Model 0048,Sports,Sportswear,HomePro,194.05,306.60
+P000049,HomePro Skincare Model 0049,Beauty,Makeup,ActiveLife,309.81,408.95
+P000050,Everyday Kitchenware Model 0050,Home & Kitchen,Kitchenware,Northstar,450.84,635.68
+P000051,UrbanStyle Kitchenware Model 0051,Home & Kitchen,Furniture,BrightHouse,439.48,861.38
+P000052,UrbanStyle Furniture Model 0052,Home & Kitchen,Decoration,Vertex,306.10,599.96
+P000053,Vertex Men Model 0053,Clothing,Shoes,Vertex,89.09,163.03
+P000054,Vertex Furniture Model 0054,Home & Kitchen,Kitchenware,Northstar,455.22,623.65
+P000055,UrbanStyle Audio Model 0055,Electronics,Audio,Everyday,476.92,720.15
+P000056,BrightHouse Fiction Model 0056,Books,Education,NovaTech,193.31,247.44
+P000057,HomePro Audio Model 0057,ELECTRONICS,Accessories,BrightHouse,497.30,815.57
+P000058,NovaTech Smartphones Model 0058,electronics ,Audio,Northstar,205.04,252.20
+P000059,HomePro Men Model 0059,Clothing,Accessories,Apex,106.66,232.52
+P000060,Northstar Decoration Model 0060,Home & Kitchen,Kitchenware,ActiveLife,192.78,350.86
+P000061,Everyday Fiction Model 0061,Books,Technology,BrightHouse,267.56,422.74
+P000062,Everyday Outdoor Model 0062,Sports,Sportswear,HomePro,256.41,423.08
+P000063,BrightHouse Makeup Model 0063,Beauty,Skincare,HomePro,16.64,36.28
+P000064,NovaTech Kitchenware Model 0064,Home & Kitchen,Decoration,BrightHouse,198.38,345.18
+P000065,Everyday Fitness Model 0065,Sports,Outdoor,HomePro,455.43,960.96
+P000066,Everyday Outdoor Toys Model 0066,Toys,Educational,Apex,212.77,370.22
+P000067,HomePro Makeup Model 0067,Beauty,Haircare,BrightHouse,442.90,965.52
+P000068,UrbanStyle Outdoor Model 0068,Sports,Fitness,NovaTech,98.41,194.85
+P000069,Apex Sportswear Model 0069,Sports,Fitness,ActiveLife,490.71,834.21
+P000070,Vertex Audio Model 0070,ELECTRONICS,Laptops,BrightHouse,96.44,167.81
+P000071,Everyday Outdoor Toys Model 0071,Toys,Games,HomePro,70.66,136.37
+P000072,HomePro Haircare Model 0072,Beauty,Skincare,BrightHouse,367.12,616.76
+P000073,UrbanStyle Games Model 0073,Toys,Games,ActiveLife,356.31,762.50
+P000074,Northstar Kitchenware Model 0074,Home & Kitchen,Kitchenware,HomePro,304.71,444.88
+P000075,UrbanStyle Educational Model 0075,Toys,Educational,NovaTech,297.47,475.95
+P000076,UrbanStyle Smartphones Model 0076,Electronics,Smartphones,Northstar,10.96,23.02
+P000077,Luma Educational Model 0077,Toys,Educational,UrbanStyle,77.46,130.13
+P000078,Northstar Smartphones Model 0078,electronics ,Smartphones,Luma,302.94,524.09
+P000079,NovaTech Shoes Model 0079,Clothing,Women,Everyday,436.07,571.25
+P000080,Vertex Makeup Model 0080,Beauty,Haircare,Apex,8.97,12.92
+P000081,Apex Accessories Model 0081,Clothing,Women,NovaTech,156.13,209.21
+P000082,Apex Furniture Model 0082,Home & Kitchen,Furniture,Vertex,97.79,157.44
+P000083,UrbanStyle Games Model 0083,Toys,Educational,Vertex,263.53,413.74
+P000084,NovaTech Makeup Model 0084,Beauty,Haircare,UrbanStyle,95.61,172.10
+P000085,UrbanStyle Kitchenware Model 0085,Home & Kitchen,Decoration,Apex,377.12,791.95
+P000086,HomePro Haircare Model 0086,Beauty,Makeup,BrightHouse,77.84,157.24
+P000087,NovaTech Educational Model 0087,Toys,Outdoor Toys,ActiveLife,450.29,936.60
+P000088,Everyday Laptops Model 0088,ELECTRONICS,Accessories,NovaTech,333.13,639.61
+P000089,BrightHouse Outdoor Toys Model 0089,Toys,Educational,ActiveLife,178.57,239.28
+P000090,Apex Fitness Model 0090,Sports,Outdoor,Vertex,322.51,477.31
+P000091,BrightHouse Skincare Model 0091,Beauty,Makeup,ActiveLife,208.16,299.75
+P000092,BrightHouse Fitness Model 0092,Sports,Sportswear,BrightHouse,220.25,288.53
+P000093,Everyday Makeup Model 0093,Beauty,Makeup,NovaTech,11.41,20.54
+P000094,UrbanStyle Makeup Model 0094,Beauty,Makeup,Luma,428.60,540.04
+P000095,Apex Educational Model 0095,Toys,Outdoor Toys,UrbanStyle,137.39,233.56
+P000096,Vertex Kitchenware Model 0096,Home & Kitchen,Kitchenware,HomePro,46.36,73.25
+P000097,HomePro Sportswear Model 0097,Sports,Outdoor,Everyday,176.73,222.68
+P000098,Luma Furniture Model 0098,Home & Kitchen,Furniture,UrbanStyle,220.98,479.53
+P000099,Apex Fitness Model 0099,Sports,Outdoor,Apex,363.71,512.83
+P000100,BrightHouse Outdoor Toys Model 0100,Toys,Outdoor Toys,ActiveLife,21.32,25.37
+P000101,UrbanStyle Kitchenware Model 0101,Home & Kitchen,Furniture,Vertex,232.91,493.77
+P000102,ActiveLife Laptops Model 0102,ELECTRONICS,Laptops,Luma,406.70,862.20
+P000103,Northstar Men Model 0103,Clothing,Shoes,Vertex,463.86,858.14
+P000104,BrightHouse Education Model 0104,Books,Education,UrbanStyle,487.26,774.74
+P000105,ActiveLife Haircare Model 0105,Beauty,Makeup,NovaTech,227.87,417.00
+P000106,Everyday Smartphones Model 0106,electronics ,Smartphones,NovaTech,348.24,759.16
+P000107,Vertex Fitness Model 0107,Sports,Sportswear,ActiveLife,20.14,41.29
+P000108,NovaTech Accessories Model 0108,Clothing,Men,Vertex,165.95,295.39
+P000109,Northstar Educational Model 0109,Toys,Outdoor Toys,HomePro,296.85,546.20
+P000110,ActiveLife Education Model 0110,Books,Education,Vertex,66.86,115.67
+P000111,Luma Games Model 0111,Toys,Games,Apex,158.28,324.47
+P000112,Apex Smartphones Model 0112,electronics ,Audio,Northstar,387.52,790.54
+P000113,UrbanStyle Makeup Model 0113,Beauty,Makeup,UrbanStyle,249.61,436.82
+P000114,UrbanStyle Outdoor Toys Model 0114,Toys,Educational,NovaTech,343.02,593.42
+P000115,BrightHouse Audio Model 0115,ELECTRONICS,Accessories,ActiveLife,156.15,276.39
+P000116,UrbanStyle Decoration Model 0116,Home & Kitchen,Decoration,NovaTech,390.17,635.98
+P000117,Vertex Women Model 0117,Clothing,Shoes,Apex,113.56,202.14
+P000118,Everyday Makeup Model 0118,Beauty,Skincare,Everyday,201.15,364.08
+P000119,Luma Outdoor Model 0119,Sports,Fitness,Apex,232.87,293.42
+P000120,Northstar Accessories Model 0120,Clothing,Women,UrbanStyle,53.89,76.52
+P000121,BrightHouse Audio Model 0121,Electronics,Laptops,Apex,209.35,330.77
+P000122,Northstar Sportswear Model 0122,Sports,Sportswear,ActiveLife,139.55,205.14
+P000123,Luma Furniture Model 0123,Home & Kitchen,Furniture,Apex,35.63,72.69
+P000124,Apex Skincare Model 0124,Beauty,Haircare,Luma,29.42,40.01
+P000125,UrbanStyle Educational Model 0125,Toys,Educational,BrightHouse,330.18,544.80
+P000126,Luma Men Model 0126,Clothing,Men,Northstar,126.52,246.71
+P000127,Northstar Fiction Model 0127,Books,Fiction,NovaTech,116.04,220.48
+P000128,Everyday Shoes Model 0128,Clothing,Men,Luma,438.35,635.61
+P000129,UrbanStyle Skincare Model 0129,Beauty,Skincare,Everyday,131.59,218.44
+P000130,HomePro Audio Model 0130,ELECTRONICS,Smartphones,Everyday,281.26,374.08
+P000131,Vertex Accessories Model 0131,Electronics,Smartphones,Everyday,224.91,456.57
+P000132,Apex Makeup Model 0132,Beauty,Makeup,ActiveLife,298.11,631.99
+P000133,UrbanStyle Fitness Model 0133,Sports,Outdoor,Vertex,419.66,658.87
+P000134,Vertex Sportswear Model 0134,Sports,Fitness,Northstar,227.42,491.23
+P000135,HomePro Educational Model 0135,Toys,Games,Northstar,417.93,597.64
+P000136,Everyday Skincare Model 0136,Beauty,Skincare,Apex,448.30,914.53
+P000137,Apex Fitness Model 0137,Sports,Fitness,Vertex,364.21,768.48
+P000138,UrbanStyle Technology Model 0138,Books,Fiction,NovaTech,187.10,306.84
+P000139,BrightHouse Skincare Model 0139,Beauty,Haircare,Everyday,478.51,1028.80
+P000140,Northstar Women Model 0140,Clothing,Accessories,Vertex,232.08,475.76
+P000141,ActiveLife Makeup Model 0141,Beauty,Makeup,BrightHouse,305.22,534.14
+P000142,Vertex Technology Model 0142,Books,Education,NovaTech,333.77,717.61
+P000143,Luma Shoes Model 0143,Clothing,Accessories,Luma,486.80,963.86
+P000144,Luma Games Model 0144,Toys,Outdoor Toys,BrightHouse,168.13,311.04
+P000145,Apex Accessories Model 0145,Clothing,Men,Northstar,154.11,214.21
+P000146,NovaTech Educational Model 0146,Toys,Educational,BrightHouse,187.42,303.62
+P000147,Northstar Makeup Model 0147,Beauty,Skincare,Apex,457.49,571.86
+P000148,Apex Makeup Model 0148,Beauty,Makeup,HomePro,405.73,515.28
+P000149,Apex Men Model 0149,Clothing,Shoes,Vertex,43.92,69.39
+P000150,NovaTech Sportswear Model 0150,Sports,Fitness,Northstar,331.99,663.98
+P000151,NovaTech Decoration Model 0151,Home & Kitchen,Furniture,Vertex,99.09,141.70
+P000152,UrbanStyle Men Model 0152,Clothing,Women,Apex,498.57,618.23
+P000153,Luma Educational Model 0153,Toys,Games,Vertex,461.49,678.39
+P000154,Everyday Fiction Model 0154,Books,Technology,BrightHouse,244.37,493.63
+P000155,HomePro Outdoor Toys Model 0155,Toys,Outdoor Toys,UrbanStyle,97.09,133.98
+P000156,Everyday Technology Model 0156,Books,Education,NovaTech,77.43,154.86
+P000157,NovaTech Audio Model 0157,Electronics,Accessories,Luma,239.08,317.98
+P000158,ActiveLife Technology Model 0158,Books,Technology,UrbanStyle,190.19,323.32
+P000159,Everyday Outdoor Model 0159,Sports,Fitness,BrightHouse,269.04,559.60
+P000160,Vertex Haircare Model 0160,Beauty,Makeup,Luma,144.09,246.39
+P000161,BrightHouse Fitness Model 0161,Sports,Sportswear,BrightHouse,365.42,427.54
+P000162,Apex Games Model 0162,Toys,Games,Everyday,6.83,13.18
+P000163,Everyday Haircare Model 0163,Beauty,Skincare,HomePro,210.12,271.05
+P000164,ActiveLife Games Model 0164,Toys,Educational,Luma,443.56,900.43
+P000165,Everyday Outdoor Toys Model 0165,Toys,Games,Northstar,111.26,159.10
+P000166,Vertex Haircare Model 0166,Beauty,Haircare,NovaTech,379.59,546.61
+P000167,UrbanStyle Skincare Model 0167,Beauty,Skincare,BrightHouse,343.15,452.96
+P000168,NovaTech Decoration Model 0168,Home & Kitchen,Furniture,BrightHouse,52.25,90.39
+P000169,UrbanStyle Outdoor Model 0169,Sports,Outdoor,Vertex,442.19,627.91
+P000170,Northstar Technology Model 0170,Books,Fiction,Everyday,129.92,268.93
+P000171,Vertex Furniture Model 0171,Home & Kitchen,Decoration,NovaTech,18.91,33.09
+P000172,ActiveLife Sportswear Model 0172,Sports,Fitness,BrightHouse,417.51,789.09
+P000173,UrbanStyle Haircare Model 0173,Beauty,Makeup,Vertex,123.65,164.45
+P000174,NovaTech Women Model 0174,Clothing,Men,NovaTech,368.34,467.79
+P000175,Everyday Shoes Model 0175,Clothing,Women,Luma,228.97,288.50
+P000176,Everyday Makeup Model 0176,Beauty,Haircare,ActiveLife,397.83,505.24
+P000177,ActiveLife Skincare Model 0177,Beauty,Makeup,HomePro,304.75,551.60
+P000178,HomePro Accessories Model 0178,ELECTRONICS,Smartphones,Northstar,398.10,712.60
+P000179,NovaTech Decoration Model 0179,Home & Kitchen,Decoration,Everyday,148.07,201.38
+P000180,Northstar Laptops Model 0180,ELECTRONICS,Accessories,NovaTech,148.48,291.02
+P000181,Luma Accessories Model 0181,Electronics,Audio,ActiveLife,132.47,274.21
+P000182,Luma Education Model 0182,Books,Education,HomePro,273.39,429.22
+P000183,BrightHouse Technology Model 0183,Books,Fiction,Vertex,33.99,70.02
+P000184,Everyday Smartphones Model 0184,electronics ,Accessories,Northstar,438.32,688.16
+P000185,Luma Smartphones Model 0185,ELECTRONICS,Accessories,Vertex,358.14,676.88
+P000186,BrightHouse Sportswear Model 0186,Sports,Outdoor,UrbanStyle,293.02,471.76
+P000187,HomePro Accessories Model 0187,Clothing,Women,NovaTech,52.83,113.06
+P000188,ActiveLife Educational Model 0188,Toys,Educational,NovaTech,114.13,183.75
+P000189,NovaTech Accessories Model 0189,Clothing,Men,UrbanStyle,58.97,93.17
+P000190,UrbanStyle Games Model 0190,Toys,Outdoor Toys,ActiveLife,227.28,375.01
+P000191,Luma Fiction Model 0191,Books,Technology,Everyday,459.78,597.71
+P000192,NovaTech Furniture Model 0192,Home & Kitchen,Furniture,Everyday,332.86,665.72
+P000193,ActiveLife Women Model 0193,Clothing,Accessories,Northstar,84.42,176.44
+P000194,Everyday Outdoor Model 0194,Sports,Outdoor,Everyday,54.93,65.37
+P000195,BrightHouse Furniture Model 0195,Home & Kitchen,Kitchenware,Everyday,438.52,583.23
+P000196,NovaTech Shoes Model 0196,Clothing,Accessories,BrightHouse,487.53,619.16
+P000197,HomePro Skincare Model 0197,Beauty,Skincare,ActiveLife,448.08,663.16
+P000198,BrightHouse Education Model 0198,Books,Fiction,Vertex,245.17,360.40
+P000199,ActiveLife Laptops Model 0199,electronics ,Laptops,Northstar,196.49,318.31
+P000200,Everyday Women Model 0200,Clothing,Women,Everyday,265.49,342.48
+P000201,Vertex Furniture Model 0201,Home & Kitchen,Kitchenware,Vertex,478.23,884.73
+P000202,BrightHouse Fitness Model 0202,Sports,Fitness,UrbanStyle,429.38,768.59
+P000203,UrbanStyle Makeup Model 0203,Beauty,Makeup,Northstar,310.42,381.82
+P000204,Northstar Women Model 0204,Clothing,Accessories,HomePro,262.62,407.06
+P000205,Everyday Technology Model 0205,Books,Education,Northstar,484.45,620.10
+P000206,Vertex Education Model 0206,Books,Technology,NovaTech,165.63,263.35
+P000207,Vertex Fitness Model 0207,Sports,Outdoor,ActiveLife,184.14,377.49
+P000208,Apex Skincare Model 0208,Beauty,Skincare,Northstar,252.54,487.40
+P000209,Apex Kitchenware Model 0209,Home & Kitchen,Kitchenware,HomePro,6.34,11.86
+P000210,Apex Women Model 0210,Clothing,Accessories,Vertex,166.55,248.16
+P000211,Luma Smartphones Model 0211,ELECTRONICS,Smartphones,Northstar,477.72,707.03
+P000212,Everyday Technology Model 0212,Books,Technology,Apex,485.78,835.54
+P000213,Vertex Fiction Model 0213,Books,Technology,UrbanStyle,5.53,6.36
+P000214,Northstar Technology Model 0214,Books,Education,UrbanStyle,282.63,367.42
+P000215,ActiveLife Accessories Model 0215,electronics ,Smartphones,Apex,391.79,626.86
+P000216,Luma Sportswear Model 0216,Sports,Sportswear,UrbanStyle,125.47,273.52
+P000217,NovaTech Games Model 0217,Toys,Educational,UrbanStyle,90.96,173.73
+P000218,Everyday Furniture Model 0218,Home & Kitchen,Furniture,Northstar,471.07,574.71
+P000219,Luma Decoration Model 0219,Home & Kitchen,Furniture,Apex,339.92,747.82
+P000220,HomePro Audio Model 0220,ELECTRONICS,Accessories,Everyday,81.89,117.10
+P000221,ActiveLife Audio Model 0221,ELECTRONICS,Laptops,Northstar,450.45,518.02
+P000222,Luma Kitchenware Model 0222,Home & Kitchen,Decoration,Luma,303.48,482.53
+P000223,NovaTech Kitchenware Model 0223,Home & Kitchen,Kitchenware,NovaTech,329.83,550.82
+P000224,NovaTech Educational Model 0224,Toys,Games,Luma,59.87,96.99
+P000225,Luma Fitness Model 0225,Sports,Sportswear,ActiveLife,167.17,339.36
+P000226,BrightHouse Audio Model 0226,Electronics,Laptops,Northstar,200.53,379.00
+P000227,ActiveLife Outdoor Model 0227,Sports,Fitness,BrightHouse,40.41,69.91
+P000228,Apex Technology Model 0228,Books,Education,Northstar,409.49,761.65
+P000229,Vertex Shoes Model 0229,Clothing,Men,ActiveLife,56.16,97.72
+P000230,UrbanStyle Skincare Model 0230,Beauty,Skincare,Everyday,280.66,373.28
+P000231,UrbanStyle Makeup Model 0231,Beauty,Skincare,Apex,268.29,423.90
+P000232,Vertex Haircare Model 0232,Beauty,Skincare,NovaTech,41.27,52.00
+P000233,Apex Fiction Model 0233,Books,Fiction,NovaTech,257.43,373.27
+P000234,UrbanStyle Furniture Model 0234,Home & Kitchen,Furniture,Luma,346.54,453.97
+P000235,Vertex Haircare Model 0235,Beauty,Skincare,Everyday,351.01,687.98
+P000236,Northstar Sportswear Model 0236,Sports,Outdoor,BrightHouse,112.54,219.45
+P000237,NovaTech Outdoor Toys Model 0237,Toys,Games,NovaTech,289.80,550.62
+P000238,HomePro Educational Model 0238,Toys,Outdoor Toys,Vertex,129.65,268.38
+P000239,BrightHouse Accessories Model 0239,Electronics,Audio,ActiveLife,107.33,134.16
+P000240,Vertex Skincare Model 0240,Beauty,Skincare,Everyday,27.30,55.15
+P000241,HomePro Decoration Model 0241,Home & Kitchen,Decoration,HomePro,233.84,325.04
+P000242,ActiveLife Shoes Model 0242,Clothing,Men,ActiveLife,332.73,542.35
+P000243,Apex Audio Model 0243,ELECTRONICS,Accessories,NovaTech,487.04,720.82
+P000244,Everyday Outdoor Model 0244,Sports,Sportswear,Luma,189.78,242.92
+P000245,NovaTech Games Model 0245,Toys,Games,Luma,254.98,522.71
+P000246,Luma Fitness Model 0246,Sports,Outdoor,ActiveLife,25.19,48.11
+P000247,Everyday Women Model 0247,Clothing,Shoes,NovaTech,239.37,282.46
+P000248,NovaTech Laptops Model 0248,Electronics,Smartphones,NovaTech,151.81,320.32
+P000249,NovaTech Outdoor Toys Model 0249,Toys,Outdoor Toys,Vertex,193.39,402.25
+P000250,Apex Fiction Model 0250,Books,Education,Everyday,227.41,498.03
+P000251,ActiveLife Sportswear Model 0251,Sports,Outdoor,BrightHouse,168.28,249.05
+P000252,NovaTech Shoes Model 0252,Clothing,Shoes,Vertex,63.65,123.48
+P000253,UrbanStyle Technology Model 0253,Books,Technology,BrightHouse,408.86,748.21
+P000254,ActiveLife Shoes Model 0254,Clothing,Shoes,Vertex,472.07,726.99
+P000255,Northstar Accessories Model 0255,Electronics,Accessories,Vertex,307.63,403.00
+P000256,Everyday Accessories Model 0256,electronics ,Smartphones,UrbanStyle,9.86,19.42
+P000257,NovaTech Audio Model 0257,Electronics,Accessories,NovaTech,197.86,296.79
+P000258,BrightHouse Kitchenware Model 0258,Home & Kitchen,Furniture,BrightHouse,116.61,156.26
+P000259,Luma Fitness Model 0259,Sports,Fitness,NovaTech,52.56,109.85
+P000260,Northstar Education Model 0260,Books,Fiction,Vertex,141.03,280.65
+P000261,BrightHouse Outdoor Model 0261,Sports,Sportswear,HomePro,193.10,411.30
+P000262,HomePro Makeup Model 0262,Beauty,Skincare,Luma,214.97,309.56
+P000263,UrbanStyle Fiction Model 0263,Books,Education,BrightHouse,420.23,727.00
+P000264,Vertex Laptops Model 0264,Electronics,Audio,Vertex,486.04,918.62
+P000265,ActiveLife Furniture Model 0265,Home & Kitchen,Kitchenware,Luma,333.98,677.98
+P000266,Northstar Decoration Model 0266,Home & Kitchen,Kitchenware,Apex,381.32,636.80
+P000267,UrbanStyle Smartphones Model 0267,Electronics,Laptops,HomePro,402.26,466.62
+P000268,Everyday Games Model 0268,Toys,Outdoor Toys,Luma,369.18,542.69
+P000269,Everyday Laptops Model 0269,Electronics,Audio,Northstar,183.92,404.62
+P000270,UrbanStyle Skincare Model 0270,Beauty,Skincare,HomePro,362.29,789.79
+P000271,UrbanStyle Games Model 0271,Toys,Educational,BrightHouse,186.26,327.82
+P000272,Apex Skincare Model 0272,Beauty,Haircare,Everyday,215.62,394.58
+P000273,BrightHouse Men Model 0273,Clothing,Accessories,Northstar,98.22,139.47
+P000274,Northstar Audio Model 0274,Electronics,Laptops,ActiveLife,237.24,467.36
+P000275,Vertex Skincare Model 0275,Beauty,Makeup,UrbanStyle,212.01,385.86
+P000276,HomePro Fiction Model 0276,Books,Technology,Northstar,397.58,707.69
+P000277,Everyday Smartphones Model 0277,Electronics,Audio,Apex,209.19,288.68
+P000278,ActiveLife Sportswear Model 0278,Sports,Outdoor,NovaTech,84.76,144.94
+P000279,Northstar Haircare Model 0279,Beauty,Makeup,UrbanStyle,244.56,335.05
+P000280,HomePro Women Model 0280,Clothing,Men,Luma,167.98,366.20
+P000281,UrbanStyle Fiction Model 0281,Books,Fiction,Apex,397.45,524.63
+P000282,Apex Accessories Model 0282,Electronics,Accessories,HomePro,84.60,148.05
+P000283,Luma Skincare Model 0283,Beauty,Haircare,Apex,265.22,527.79
+P000284,ActiveLife Furniture Model 0284,Home & Kitchen,Furniture,UrbanStyle,29.08,34.61
+P000285,Everyday Skincare Model 0285,Beauty,Makeup,Vertex,197.24,313.61
+P000286,HomePro Haircare Model 0286,Beauty,Makeup,UrbanStyle,343.51,450.00
+P000287,UrbanStyle Furniture Model 0287,Home & Kitchen,Decoration,Luma,15.74,26.60
+P000288,HomePro Education Model 0288,Books,Fiction,Luma,57.22,85.26
+P000289,Northstar Audio Model 0289,Electronics,Laptops,UrbanStyle,341.15,644.77
+P000290,NovaTech Men Model 0290,Clothing,Accessories,BrightHouse,255.67,406.52
+P000291,Luma Furniture Model 0291,Home & Kitchen,Furniture,HomePro,30.10,50.57
+P000292,BrightHouse Furniture Model 0292,Home & Kitchen,Furniture,Vertex,229.04,446.63
+P000293,Luma Skincare Model 0293,Beauty,Makeup,HomePro,114.91,193.05
+P000294,NovaTech Education Model 0294,Books,Education,BrightHouse,293.12,386.92
+P000295,Vertex Games Model 0295,Toys,Outdoor Toys,Northstar,81.86,170.27
+P000296,Luma Accessories Model 0296,Clothing,Women,NovaTech,334.32,558.31
+P000297,Luma Accessories Model 0297,Clothing,Accessories,HomePro,284.87,361.78
+P000298,Everyday Furniture Model 0298,Home & Kitchen,Furniture,Everyday,121.78,242.34
+P000299,ActiveLife Makeup Model 0299,Beauty,Skincare,Luma,458.03,545.06
+P000300,ActiveLife Educational Model 0300,Toys,Educational,ActiveLife,329.06,671.28
+P000301,Luma Haircare Model 0301,Beauty,Makeup,Northstar,250.84,358.70
+P000302,Vertex Outdoor Toys Model 0302,Toys,Games,Vertex,233.28,478.22
+P000303,UrbanStyle Accessories Model 0303,Clothing,Accessories,BrightHouse,138.68,198.31
+P000304,NovaTech Accessories Model 0304,Electronics,Laptops,Northstar,369.24,505.86
+P000305,NovaTech Outdoor Toys Model 0305,Toys,Games,Northstar,40.99,47.55
+P000306,Luma Makeup Model 0306,Beauty,Haircare,ActiveLife,459.10,707.01
+P000307,Everyday Technology Model 0307,Books,Fiction,BrightHouse,485.52,971.04
+P000308,Vertex Fitness Model 0308,Sports,Sportswear,UrbanStyle,230.43,299.56
+P000309,UrbanStyle Smartphones Model 0309,ELECTRONICS,Smartphones,BrightHouse,377.47,781.36
+P000310,Northstar Sportswear Model 0310,Sports,Fitness,NovaTech,164.45,198.98
+P000311,BrightHouse Audio Model 0311,ELECTRONICS,Audio,ActiveLife,338.24,612.21
+P000312,Luma Furniture Model 0312,Home & Kitchen,Decoration,Northstar,354.44,733.69
+P000313,Everyday Decoration Model 0313,Home & Kitchen,Kitchenware,Everyday,453.79,726.06
+P000314,HomePro Outdoor Toys Model 0314,Toys,Educational,UrbanStyle,226.94,424.38
+P000315,NovaTech Shoes Model 0315,Clothing,Women,BrightHouse,364.85,634.84
+P000316,Northstar Smartphones Model 0316,Electronics,Audio,Everyday,216.85,396.84
+P000317,HomePro Skincare Model 0317,Beauty,Makeup,Everyday,88.85,178.59
+P000318,NovaTech Sportswear Model 0318,Sports,Fitness,Apex,83.59,127.06
+P000319,UrbanStyle Outdoor Toys Model 0319,Toys,Outdoor Toys,HomePro,229.54,286.92
+P000320,BrightHouse Educational Model 0320,Toys,Educational,BrightHouse,19.36,29.81
+P000321,NovaTech Fiction Model 0321,Books,Fiction,Vertex,307.09,604.97
+P000322,ActiveLife Education Model 0322,Books,Technology,ActiveLife,14.40,17.42
+P000323,Northstar Decoration Model 0323,Home & Kitchen,Decoration,Northstar,286.46,613.02
+P000324,ActiveLife Furniture Model 0324,Home & Kitchen,Furniture,NovaTech,194.95,321.67
+P000325,HomePro Games Model 0325,Toys,Games,Apex,163.18,283.93
+P000326,BrightHouse Shoes Model 0326,Clothing,Women,HomePro,382.67,658.19
+P000327,Apex Technology Model 0327,Books,Technology,ActiveLife,424.38,517.74
+P000328,Everyday Haircare Model 0328,Beauty,Makeup,NovaTech,392.96,471.55
+P000329,Northstar Kitchenware Model 0329,Home & Kitchen,Furniture,Northstar,354.00,700.92
+P000330,BrightHouse Decoration Model 0330,Home & Kitchen,Furniture,HomePro,440.41,863.20
+P000331,NovaTech Smartphones Model 0331,Electronics,Accessories,Vertex,99.26,125.07
+P000332,Everyday Audio Model 0332,Electronics,Accessories,Northstar,268.64,553.40
+P000333,Vertex Furniture Model 0333,Home & Kitchen,Furniture,HomePro,483.30,995.60
+P000334,ActiveLife Smartphones Model 0334,ELECTRONICS,Audio,Everyday,360.56,533.63
+P000335,BrightHouse Education Model 0335,Books,Education,Apex,282.51,420.94
+P000336,Vertex Skincare Model 0336,Beauty,Makeup,BrightHouse,312.94,422.47
+P000337,HomePro Decoration Model 0337,Home & Kitchen,Decoration,Vertex,337.08,593.26
+P000338,Apex Accessories Model 0338,Clothing,Women,Northstar,195.35,390.70
+P000339,Apex Kitchenware Model 0339,Home & Kitchen,Decoration,Everyday,494.03,1047.34
+P000340,BrightHouse Furniture Model 0340,Home & Kitchen,Decoration,Everyday,328.02,669.16
+P000341,HomePro Men Model 0341,Clothing,Accessories,BrightHouse,178.16,290.40
+P000342,NovaTech Technology Model 0342,Books,Technology,Luma,311.97,371.24
+P000343,Northstar Laptops Model 0343,ELECTRONICS,Laptops,Luma,153.05,211.21
+P000344,UrbanStyle Laptops Model 0344,Electronics,Accessories,Everyday,222.07,350.87
+P000345,Northstar Accessories Model 0345,Clothing,Shoes,UrbanStyle,327.82,544.18
+P000346,Northstar Educational Model 0346,Toys,Outdoor Toys,Apex,315.92,366.47
+P000347,Apex Shoes Model 0347,Clothing,Men,Northstar,391.76,673.83
+P000348,Vertex Sportswear Model 0348,Sports,Fitness,Apex,90.79,182.49
+P000349,Luma Haircare Model 0349,Beauty,Makeup,NovaTech,306.47,376.96
+P000350,HomePro Outdoor Model 0350,Sports,Outdoor,UrbanStyle,244.50,293.40
+P000351,HomePro Educational Model 0351,Toys,Outdoor Toys,Vertex,357.52,611.36
+P000352,Apex Haircare Model 0352,Beauty,Haircare,Apex,460.06,864.91
+P000353,NovaTech Audio Model 0353,ELECTRONICS,Accessories,HomePro,113.89,244.86
+P000354,UrbanStyle Men Model 0354,Clothing,Men,UrbanStyle,107.74,232.72
+P000355,Everyday Skincare Model 0355,Beauty,Haircare,Apex,281.17,610.14
+P000356,Everyday Education Model 0356,Books,Fiction,Luma,206.35,453.97
+P000357,Luma Educational Model 0357,Toys,Educational,Luma,407.38,818.83
+P000358,Northstar Decoration Model 0358,Home & Kitchen,Furniture,Northstar,377.72,808.32
+P000359,Luma Outdoor Model 0359,Sports,Sportswear,Northstar,11.39,20.50
+P000360,HomePro Audio Model 0360,Electronics,Smartphones,HomePro,8.73,13.18
+P000361,Vertex Laptops Model 0361,Electronics,Accessories,HomePro,173.11,365.26
+P000362,Luma Men Model 0362,Clothing,Shoes,Apex,483.59,1001.03
+P000363,UrbanStyle Sportswear Model 0363,Sports,Sportswear,UrbanStyle,481.73,640.70
+P000364,UrbanStyle Smartphones Model 0364,Electronics,Laptops,Everyday,122.44,172.64
+P000365,UrbanStyle Laptops Model 0365,ELECTRONICS,Audio,ActiveLife,256.83,493.11
+P000366,Luma Sportswear Model 0366,Sports,Outdoor,ActiveLife,82.60,118.94
+P000367,NovaTech Laptops Model 0367,Electronics,Accessories,Northstar,88.07,118.89
+P000368,NovaTech Sportswear Model 0368,Sports,Fitness,Apex,60.46,72.55
+P000369,UrbanStyle Women Model 0369,Clothing,Accessories,Northstar,477.99,693.09
+P000370,Luma Games Model 0370,Toys,Educational,ActiveLife,460.99,719.14
+P000371,Everyday Outdoor Model 0371,Sports,Sportswear,BrightHouse,451.63,772.29
+P000372,Everyday Makeup Model 0372,Beauty,Makeup,Vertex,83.92,113.29
+P000373,Apex Fitness Model 0373,Sports,Outdoor,Apex,61.46,107.56
+P000374,BrightHouse Shoes Model 0374,Clothing,Women,NovaTech,210.78,453.18
+P000375,Northstar Outdoor Toys Model 0375,Toys,Educational,Everyday,68.98,88.98
+P000376,UrbanStyle Outdoor Model 0376,Sports,Outdoor,UrbanStyle,401.21,525.59
+P000377,Vertex Smartphones Model 0377,ELECTRONICS,Laptops,ActiveLife,338.13,473.38
+P000378,UrbanStyle Shoes Model 0378,Clothing,Women,NovaTech,434.13,625.15
+P000379,Everyday Makeup Model 0379,Beauty,Haircare,Luma,69.46,79.88
+P000380,UrbanStyle Outdoor Toys Model 0380,Toys,Educational,NovaTech,107.04,156.28
+P000381,Luma Accessories Model 0381,ELECTRONICS,Accessories,ActiveLife,308.66,657.45
+P000382,BrightHouse Outdoor Toys Model 0382,Toys,Games,ActiveLife,254.29,338.21
+P000383,UrbanStyle Accessories Model 0383,electronics ,Laptops,BrightHouse,70.39,124.59
+P000384,HomePro Makeup Model 0384,Beauty,Skincare,BrightHouse,100.98,180.75
+P000385,Everyday Educational Model 0385,Toys,Games,Apex,182.44,213.45
+P000386,UrbanStyle Shoes Model 0386,Clothing,Shoes,UrbanStyle,31.20,65.52
+P000387,Everyday Haircare Model 0387,Beauty,Makeup,Apex,175.11,337.96
+P000388,Everyday Makeup Model 0388,Beauty,Makeup,Vertex,177.36,301.51
+P000389,HomePro Outdoor Model 0389,Sports,Sportswear,UrbanStyle,36.08,59.89
+P000390,Luma Decoration Model 0390,Home & Kitchen,Furniture,Vertex,240.26,458.90
+P000391,Everyday Laptops Model 0391,electronics ,Accessories,HomePro,447.16,818.30
+P000392,HomePro Laptops Model 0392,Electronics,Audio,UrbanStyle,325.89,387.81
+P000393,Apex Fiction Model 0393,Books,Fiction,Apex,384.14,595.42
+P000394,ActiveLife Decoration Model 0394,Home & Kitchen,Kitchenware,NovaTech,217.34,423.81
+P000395,ActiveLife Educational Model 0395,Toys,Educational,ActiveLife,372.46,491.65
+P000396,UrbanStyle Outdoor Toys Model 0396,Toys,Games,ActiveLife,491.14,898.79
+P000397,UrbanStyle Decoration Model 0397,Home & Kitchen,Kitchenware,HomePro,413.65,814.89
+P000398,ActiveLife Furniture Model 0398,Home & Kitchen,Furniture,HomePro,46.27,54.60
+P000399,UrbanStyle Makeup Model 0399,Beauty,Makeup,NovaTech,313.42,482.67
+P000400,UrbanStyle Educational Model 0400,Toys,Outdoor Toys,NovaTech,110.54,150.33
+P000401,UrbanStyle Sportswear Model 0401,Sports,Fitness,UrbanStyle,73.98,96.17
+P000402,NovaTech Furniture Model 0402,Home & Kitchen,Decoration,UrbanStyle,100.46,119.55
+P000403,BrightHouse Education Model 0403,Books,Technology,Everyday,373.11,634.29
+P000404,Apex Decoration Model 0404,Home & Kitchen,Decoration,Luma,174.92,383.07
+P000405,Everyday Decoration Model 0405,Home & Kitchen,Decoration,Northstar,183.92,321.86
+P000406,Apex Audio Model 0406,electronics ,Laptops,Northstar,291.62,574.49
+P000407,Northstar Accessories Model 0407,Electronics,Laptops,Northstar,413.63,699.03
+P000408,Apex Skincare Model 0408,Beauty,Makeup,Everyday,360.87,501.61
+P000409,HomePro Fitness Model 0409,Sports,Fitness,Northstar,206.85,343.37
+P000410,Luma Technology Model 0410,Books,Education,Northstar,270.87,514.65
+P000411,HomePro Decoration Model 0411,Home & Kitchen,Furniture,Vertex,212.23,322.59
+P000412,HomePro Fitness Model 0412,Sports,Sportswear,Apex,438.05,766.59
+P000413,Northstar Technology Model 0413,Books,Education,Apex,210.25,376.35
+P000414,Vertex Skincare Model 0414,Beauty,Skincare,ActiveLife,352.68,585.45
+P000415,UrbanStyle Smartphones Model 0415,Electronics,Smartphones,HomePro,98.36,150.49
+P000416,NovaTech Smartphones Model 0416,electronics ,Accessories,Northstar,475.53,1046.17
+P000417,Everyday Outdoor Model 0417,Sports,Fitness,HomePro,342.04,495.96
+P000418,NovaTech Haircare Model 0418,Beauty,Haircare,ActiveLife,201.35,400.69
+P000419,Northstar Audio Model 0419,Electronics,Accessories,Vertex,41.35,63.68
+P000420,BrightHouse Smartphones Model 0420,ELECTRONICS,Audio,Apex,366.10,501.56
+P000421,ActiveLife Audio Model 0421,Electronics,Audio,Everyday,396.47,670.03
+P000422,Apex Outdoor Toys Model 0422,Toys,Educational,Luma,455.97,611.00
+P000423,Vertex Education Model 0423,Books,Fiction,Northstar,326.87,689.70
+P000424,BrightHouse Games Model 0424,Toys,Educational,Vertex,172.56,379.63
+P000425,BrightHouse Men Model 0425,Clothing,Shoes,Luma,454.72,668.44
+P000426,UrbanStyle Shoes Model 0426,Clothing,Accessories,HomePro,308.78,463.17
+P000427,HomePro Outdoor Model 0427,Sports,Outdoor,Northstar,73.14,100.20
+P000428,Everyday Outdoor Model 0428,Sports,Outdoor,Luma,293.51,452.01
+P000429,Vertex Games Model 0429,Toys,Educational,ActiveLife,99.31,210.54
+P000430,Vertex Skincare Model 0430,Beauty,Haircare,Everyday,201.92,438.17
+P000431,Vertex Outdoor Model 0431,Sports,Fitness,UrbanStyle,105.23,183.10
+P000432,BrightHouse Accessories Model 0432,Electronics,Laptops,ActiveLife,191.19,271.49
+P000433,BrightHouse Outdoor Toys Model 0433,Toys,Educational,Apex,412.59,656.02
+P000434,ActiveLife Education Model 0434,Books,Technology,ActiveLife,426.02,809.44
+P000435,Luma Haircare Model 0435,Beauty,Makeup,UrbanStyle,360.98,527.03
+P000436,Apex Men Model 0436,Clothing,Women,BrightHouse,70.19,86.33
+P000437,Apex Outdoor Model 0437,Sports,Outdoor,Vertex,363.99,454.99
+P000438,ActiveLife Outdoor Model 0438,Sports,Fitness,Northstar,61.49,110.07
+P000439,BrightHouse Accessories Model 0439,ELECTRONICS,Smartphones,Northstar,244.38,378.79
+P000440,ActiveLife Decoration Model 0440,Home & Kitchen,Kitchenware,Northstar,126.23,268.87
+P000441,Luma Sportswear Model 0441,Sports,Outdoor,Luma,48.62,90.43
+P000442,ActiveLife Educational Model 0442,Toys,Games,HomePro,430.62,943.06
+P000443,Apex Educational Model 0443,Toys,Educational,Apex,295.39,599.64
+P000444,Vertex Skincare Model 0444,Beauty,Skincare,Apex,485.13,916.90
+P000445,Everyday Outdoor Toys Model 0445,Toys,Outdoor Toys,Everyday,275.83,347.55
+P000446,UrbanStyle Accessories Model 0446,Clothing,Shoes,UrbanStyle,451.31,568.65
+P000447,Luma Laptops Model 0447,Electronics,Laptops,Apex,422.10,650.03
+P000448,Northstar Audio Model 0448,Electronics,Smartphones,Vertex,103.07,173.16
+P000449,UrbanStyle Audio Model 0449,ELECTRONICS,Laptops,Apex,27.44,50.76
+P000450,HomePro Accessories Model 0450,Electronics,Laptops,Everyday,17.31,27.87
+P000451,Vertex Men Model 0451,Clothing,Women,Everyday,238.73,288.86
+P000452,Everyday Accessories Model 0452,Clothing,Women,BrightHouse,62.71,100.96
+P000453,UrbanStyle Accessories Model 0453,Electronics,Accessories,Northstar,153.62,208.92
+P000454,HomePro Games Model 0454,Toys,Outdoor Toys,NovaTech,414.23,579.92
+P000455,NovaTech Education Model 0455,Books,Fiction,ActiveLife,416.99,729.73
+P000456,Everyday Educational Model 0456,Toys,Educational,Luma,219.01,453.35
+P000457,Luma Men Model 0457,Clothing,Shoes,NovaTech,311.10,373.32
+P000458,Northstar Fiction Model 0458,Books,Technology,NovaTech,357.21,410.79
+P000459,BrightHouse Accessories Model 0459,Electronics,Smartphones,Vertex,235.28,451.74
+P000460,Northstar Fitness Model 0460,Sports,Sportswear,Luma,216.87,405.55
+P000461,ActiveLife Skincare Model 0461,Beauty,Haircare,HomePro,107.82,140.17
+P000462,Vertex Games Model 0462,Toys,Games,NovaTech,402.83,644.53
+P000463,UrbanStyle Haircare Model 0463,Beauty,Haircare,Luma,499.98,754.97
+P000464,BrightHouse Shoes Model 0464,Clothing,Women,UrbanStyle,296.21,622.04
+P000465,HomePro Kitchenware Model 0465,Home & Kitchen,Kitchenware,UrbanStyle,247.00,301.34
+P000466,Northstar Men Model 0466,Clothing,Shoes,Vertex,258.97,499.81
+P000467,ActiveLife Furniture Model 0467,Home & Kitchen,Furniture,NovaTech,50.64,71.91
+P000468,Apex Haircare Model 0468,Beauty,Haircare,Luma,144.29,204.89
+P000469,Vertex Technology Model 0469,Books,Education,Luma,410.53,574.74
+P000470,ActiveLife Games Model 0470,Toys,Outdoor Toys,Apex,8.30,17.68
+P000471,Northstar Smartphones Model 0471,ELECTRONICS,Laptops,Northstar,250.64,355.91
+P000472,BrightHouse Skincare Model 0472,Beauty,Haircare,UrbanStyle,29.34,39.61
+P000473,Everyday Outdoor Toys Model 0473,Toys,Games,Apex,231.97,313.16
+P000474,ActiveLife Audio Model 0474,Electronics,Smartphones,HomePro,184.68,323.19
+P000475,BrightHouse Skincare Model 0475,Beauty,Haircare,Luma,221.12,254.29
+P000476,Vertex Educational Model 0476,Toys,Games,UrbanStyle,279.17,340.59
+P000477,UrbanStyle Accessories Model 0477,Clothing,Accessories,BrightHouse,127.89,153.47
+P000478,NovaTech Audio Model 0478,Electronics,Audio,HomePro,349.55,685.12
+P000479,Apex Accessories Model 0479,Electronics,Laptops,BrightHouse,86.53,151.43
+P000480,Luma Smartphones Model 0480,Electronics,Accessories,UrbanStyle,282.40,482.90
+P000481,HomePro Women Model 0481,Clothing,Shoes,Apex,426.28,554.16
+P000482,Vertex Audio Model 0482,ELECTRONICS,Audio,UrbanStyle,267.32,556.03
+P000483,Luma Outdoor Toys Model 0483,Toys,Games,Apex,277.94,322.41
+P000484,UrbanStyle Sportswear Model 0484,Sports,Outdoor,ActiveLife,274.94,456.40
+P000485,Everyday Haircare Model 0485,Beauty,Makeup,UrbanStyle,87.78,119.38
+P000486,Vertex Decoration Model 0486,Home & Kitchen,Furniture,Northstar,65.07,88.50
+P000487,BrightHouse Games Model 0487,Toys,Educational,UrbanStyle,241.31,393.34
+P000488,BrightHouse Sportswear Model 0488,Sports,Outdoor,Vertex,400.73,861.57
+P000489,BrightHouse Smartphones Model 0489,Electronics,Audio,Northstar,131.84,257.09
+P000490,ActiveLife Sportswear Model 0490,Sports,Sportswear,HomePro,459.04,757.42
+P000491,UrbanStyle Women Model 0491,Clothing,Shoes,Apex,233.00,449.69
+P000492,Northstar Skincare Model 0492,Beauty,Makeup,HomePro,364.67,638.17
+P000493,Luma Skincare Model 0493,Beauty,Makeup,UrbanStyle,396.43,701.68
+P000494,HomePro Kitchenware Model 0494,Home & Kitchen,Decoration,Apex,314.17,468.11
+P000495,ActiveLife Outdoor Model 0495,Sports,Sportswear,Luma,133.40,197.43
+P000496,NovaTech Makeup Model 0496,Beauty,Skincare,Luma,481.79,602.24
+P000497,UrbanStyle Outdoor Model 0497,Sports,Sportswear,BrightHouse,56.99,67.25
+P000498,BrightHouse Accessories Model 0498,Electronics,Accessories,UrbanStyle,206.53,256.10
+P000499,ActiveLife Women Model 0499,Clothing,Women,Vertex,133.91,285.23
+P000500,ActiveLife Educational Model 0500,Toys,Outdoor Toys,Vertex,461.01,774.50

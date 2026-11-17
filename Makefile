@@ -20,3 +20,7 @@ schemas:
 # Crear tablas RAW
 raw:
 	docker compose exec -T db psql -U admin -d ecommerce < sql/02_raw.sql
+
+
+ingest:
+	python scripts/load_raw.py

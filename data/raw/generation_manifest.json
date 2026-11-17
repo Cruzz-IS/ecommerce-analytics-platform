@@ -1,0 +1,29 @@
+{
+  "seed": 42,
+  "generated_at_utc": "2026-11-16T03:36:32+00:00",
+  "base_orders_requested": 100000,
+  "update_rate": 0.1,
+  "files": {
+    "batch_001/customers.csv": 20000,
+    "batch_001/products.csv": 500,
+    "batch_001/orders.csv": 101000,
+    "batch_001/order_items.csv": 299585,
+    "batch_001/payments.csv": 100000,
+    "batch_001/shipments.csv": 67261,
+    "batch_002/orders.csv": 10000
+  },
+  "intentional_quality_issues": {
+    "orders_duplicate_rows": 1000,
+    "customers_email_null_or_malformed": 600,
+    "products_electronics_category_variants": "Electronics / electronics  / ELECTRONICS",
+    "shipments_delivered_before_shipped": 336,
+    "orders_with_nonexistent_customer": 200,
+    "orders_updated_in_batch_002": 10000
+  },
+  "notes": [
+    "Los porcentajes son aproximados y se calculan sobre el volumen base indicado.",
+    "Los CSV no incluyen _batch_id, _loaded_at ni _source_file; los agrega la ingesta.",
+    "batch_002/orders.csv contiene versiones más recientes de order_id existentes.",
+    "El generador es reproducible si se usa la misma semilla (--seed)."
+  ]
+}
