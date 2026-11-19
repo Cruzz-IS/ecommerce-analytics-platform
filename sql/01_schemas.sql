@@ -11,6 +11,9 @@ BEGIN
 END
 $$;
 
+
+ALTER ROLE bi_reader SET default_transaction_read_only = on;
+
 -- Crear esquemas
 CREATE SCHEMA IF NOT EXISTS raw;
 CREATE SCHEMA IF NOT EXISTS staging;

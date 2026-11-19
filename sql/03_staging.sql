@@ -2,7 +2,7 @@ DROP SCHEMA IF EXISTS staging CASCADE;   -- en 03
 CREATE SCHEMA staging;
 
 
-CREATE OR REPLACE VIEW staging.customers AS
+CREATE TABLE  staging.customers AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -24,7 +24,7 @@ SELECT
 FROM ranked WHERE rn = 1;
 
 
-CREATE OR REPLACE VIEW staging.products AS
+CREATE TABLE  staging.products AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -46,7 +46,7 @@ SELECT
 FROM ranked WHERE rn = 1;
 
 
-CREATE OR REPLACE VIEW staging.orders AS
+CREATE TABLE  staging.orders AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -67,7 +67,7 @@ SELECT
 FROM ranked WHERE rn = 1;
 
 
-CREATE OR REPLACE VIEW staging.order_items AS
+CREATE TABLE  staging.order_items AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY order_item_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -88,7 +88,7 @@ SELECT
 FROM ranked WHERE rn = 1;
 
 
-CREATE OR REPLACE VIEW staging.payments AS
+CREATE TABLE  staging.payments AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY payment_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -105,7 +105,7 @@ SELECT
 FROM ranked WHERE rn = 1;
 
 
-CREATE OR REPLACE VIEW staging.shipments AS
+CREATE TABLE  staging.shipments AS
 WITH ranked AS (
     SELECT r.*,
            ROW_NUMBER() OVER (PARTITION BY shipment_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
@@ -124,3 +124,18 @@ SELECT
     END AS delivery_chronology_valid,
     _batch_id, _loaded_at, _source_file
 FROM ranked WHERE rn = 1;
+
+
+ALTER TABLE staging.customers   ADD PRIMARY KEY (customer_id);
+ALTER TABLE staging.products    ADD PRIMARY KEY (product_id);
+ALTER TABLE staging.orders      ADD PRIMARY KEY (order_id);
+ALTER TABLE staging.order_items ADD PRIMARY KEY (order_item_id);
+ALTER TABLE staging.payments    ADD PRIMARY KEY (payment_id);
+ALTER TABLE staging.shipments   ADD PRIMARY KEY (shipment_id);
+CREATE INDEX ON staging.orders (customer_id);
+CREATE INDEX ON staging.order_items (order_id);
+CREATE INDEX ON staging.order_items (product_id);
+CREATE INDEX ON staging.payments (order_id);
+CREATE INDEX ON staging.shipments (order_id);
+ANALYZE staging.customers; ANALYZE staging.products; ANALYZE staging.orders;
+ANALYZE staging.order_items; ANALYZE staging.payments; ANALYZE staging.shipments;
