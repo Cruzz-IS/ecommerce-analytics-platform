@@ -1,13 +1,14 @@
 CREATE TABLE IF NOT EXISTS raw.orders (
-  order_id     text,
-  customer_id  text,
-  order_ts     text,
-  status       text,
-  channel      text,
-  promo_code   text,
-  _batch_id    text,
-  _loaded_at   timestamptz NOT NULL DEFAULT now(),
-  _source_file text
+    order_id      TEXT,
+    customer_id   TEXT,
+    order_ts      TEXT,
+    status        TEXT,
+    channel       TEXT,
+    promo_code    TEXT,
+
+    _batch_id     TEXT,
+    _loaded_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    _source_file  TEXT
 );
 
 CREATE TABLE IF NOT EXISTS raw.customers (
@@ -41,18 +42,6 @@ CREATE TABLE IF NOT EXISTS raw.products (
     _source_file   TEXT
 );
 
-CREATE TABLE IF NOT EXISTS raw.orders (
-    order_id      TEXT,
-    customer_id   TEXT,
-    order_ts      TEXT,
-    status        TEXT,
-    channel       TEXT,
-    promo_code    TEXT,
-
-    _batch_id     TEXT,
-    _loaded_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    _source_file  TEXT
-);
 
 CREATE TABLE IF NOT EXISTS raw.order_items (
     order_item_id  TEXT,

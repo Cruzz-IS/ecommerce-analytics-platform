@@ -7,3 +7,7 @@ data/raw/*.csv
 dbt_project/target/
 dbt_project/logs/
 .DS_Store
+
+data/raw/**/*.csv
+data/raw/*.json
+logs/

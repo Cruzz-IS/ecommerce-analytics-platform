@@ -1,5 +1,7 @@
--- 04_marts.sql
--- Modelo analítico inicial mediante vistas.
+-- Modelo analitico inicial mediante vistas.
+DROP SCHEMA IF EXISTS marts CASCADE;     -- en 04
+CREATE SCHEMA marts;
+
 
 CREATE OR REPLACE VIEW marts.dim_customers AS
 SELECT customer_id, first_name, last_name, email, email_is_valid,

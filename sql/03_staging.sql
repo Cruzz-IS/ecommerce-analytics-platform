@@ -1,27 +1,11 @@
-CREATE OR REPLACE VIEW staging.orders AS
-SELECT DISTINCT ON (r.order_id)
-       NULLIF(trim(r.order_id), '')::int        AS order_id,
-       NULLIF(trim(r.customer_id), '')::int     AS customer_id,
-       NULLIF(trim(r.order_ts), '')::timestamp  AS order_ts,
-       lower(trim(r.status))                    AS status,
-       lower(trim(r.channel))                   AS channel,
-       NULLIF(upper(trim(r.promo_code)), '')    AS promo_code,
-       r._batch_id,
-       r._loaded_at
-FROM raw.orders AS r
-WHERE NULLIF(trim(r.order_id), '') IS NOT NULL
-ORDER BY r.order_id, r._loaded_at DESC;
+DROP SCHEMA IF EXISTS staging CASCADE;   -- en 03
+CREATE SCHEMA staging;
 
-
-
-
--- 03_staging.sql
--- Vistas tipificadas. RAW permanece intacta.
 
 CREATE OR REPLACE VIEW staging.customers AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.customers r
 )
 SELECT
@@ -43,7 +27,7 @@ FROM ranked WHERE rn = 1;
 CREATE OR REPLACE VIEW staging.products AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY product_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.products r
 )
 SELECT
@@ -65,7 +49,7 @@ FROM ranked WHERE rn = 1;
 CREATE OR REPLACE VIEW staging.orders AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY order_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.orders r
 )
 SELECT
@@ -86,7 +70,7 @@ FROM ranked WHERE rn = 1;
 CREATE OR REPLACE VIEW staging.order_items AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY order_item_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY order_item_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.order_items r
 )
 SELECT
@@ -107,7 +91,7 @@ FROM ranked WHERE rn = 1;
 CREATE OR REPLACE VIEW staging.payments AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY payment_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY payment_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.payments r
 )
 SELECT
@@ -124,7 +108,7 @@ FROM ranked WHERE rn = 1;
 CREATE OR REPLACE VIEW staging.shipments AS
 WITH ranked AS (
     SELECT r.*,
-           ROW_NUMBER() OVER (PARTITION BY shipment_id ORDER BY _loaded_at DESC, _batch_id DESC) AS rn
+           ROW_NUMBER() OVER (PARTITION BY shipment_id ORDER BY _batch_id DESC, _loaded_at DESC) AS rn
     FROM raw.shipments r
 )
 SELECT
