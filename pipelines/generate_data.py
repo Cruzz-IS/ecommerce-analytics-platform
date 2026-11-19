@@ -11,6 +11,7 @@ import random
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
+from collections import defaultdict
 
 
 CUSTOMER_COLUMNS = [
@@ -161,6 +162,9 @@ def generate_products(rng: random.Random, count: int) -> list[dict]:
             canonical = "Electronics"
         subcategories = CATEGORIES.get(canonical, ["General"])
         
+        subcategory = rng.choice(subcategories)
+        brand = rng.choice(BRANDS)
+        
         ##calculos de costos y precios
         unit_cost = Decimal(rng.randint(300, 50000)) / Decimal("100")
         markup = Decimal(rng.randint(115, 220)) / Decimal("100")
@@ -168,9 +172,9 @@ def generate_products(rng: random.Random, count: int) -> list[dict]:
 
         rows.append({
             "product_id": f"P{i:06d}",
-            "product_name": f"{rng.choice(BRANDS)} {rng.choice(subcategories)} Model {i:04d}",
+            "product_name":  f"{brand} {subcategory} Model {i:04d}",
             "category": category,
-            "subcategory": rng.choice(subcategories),
+            "subcategory": subcategory, "brand": brand,
             "brand": rng.choice(BRANDS),
             "unit_cost": money(unit_cost),
             "list_price": money(list_price),
@@ -248,19 +252,33 @@ def generate_order_items(
     return rows
 
 ##generar pagos por cada orden, con un tiempo de pago aleatorio y un monto basado en un rango de valores.
-def generate_payments(rng: random.Random, base_orders: list[dict]) -> list[dict]:
+def order_totals(order_items):
+    totals = defaultdict(Decimal)
+    for item in order_items:
+        totals[item["order_id"]] += Decimal(item["unit_price"]) * Decimal(item["quantity"])
+    return totals
+
+def payment_status(rng, order_status):
+    if order_status == "cancelled":
+        return rng.choices(["failed", "refunded", "pending"], weights=[50, 30, 20], k=1)[0]
+    if order_status in ("pending", "processing"):
+        return rng.choices(["paid", "pending"], weights=[60, 40], k=1)[0]
+    return rng.choices(["paid", "refunded"], weights=[97, 3], k=1)[0]
+
+def generate_payments(rng, base_orders, order_items):
+    totals = order_totals(order_items)
     rows = []
     for i, order in enumerate(base_orders, start=1):
         order_ts = datetime.strptime(order["order_ts"], "%Y-%m-%d %H:%M:%S")
         paid_ts = order_ts + timedelta(minutes=rng.randint(1, 180))
-        amount = Decimal(rng.randint(1500, 150000)) / Decimal("100")
+        amount = totals[order["order_id"]].quantize(Decimal("0.01"))
         rows.append({
             "payment_id": f"PAY{i:09d}",
             "order_id": order["order_id"],
             "method": rng.choice(PAYMENT_METHODS),
             "amount": money(amount),
             "paid_ts": paid_ts.strftime("%Y-%m-%d %H:%M:%S"),
-            "status": rng.choices(PAYMENT_STATUSES, weights=[82, 10, 5, 3], k=1)[0],
+            "status": payment_status(rng, order["status"]),
         })
     return rows
 
@@ -272,8 +290,17 @@ def generate_shipments(
     rows = []
     eligible = [o for o in base_orders if o["status"] in ("shipped", "delivered")]
     shipment_orders = [o for o in eligible if rng.random() < 0.96]
-    bad_count = round(len(shipment_orders) * 0.005)
-    bad_indices = set(rng.sample(range(len(shipment_orders)), bad_count)) if bad_count else set()
+    delivered_idx = [k for k, o in enumerate(shipment_orders) if o["status"] == "delivered"]
+    bad_count = round(len(delivered_idx) * 0.005)
+    bad_indices = set(rng.sample(delivered_idx, bad_count)) if bad_count else set()
+
+    delivered_ts = None
+    if order["status"] == "delivered":
+        delivered_ts = shipped_ts + timedelta(hours=rng.randint(12, 120))
+        if i - 1 in bad_indices:
+            delivered_ts = shipped_ts - timedelta(hours=rng.randint(1, 48))
+    # en el diccionario:
+    "delivered_ts": delivered_ts.strftime("%Y-%m-%d %H:%M:%S") if delivered_ts else "", if bad_count else set()
 
     for i, order in enumerate(shipment_orders, start=1):
         order_ts = datetime.strptime(order["order_ts"], "%Y-%m-%d %H:%M:%S")
@@ -380,7 +407,7 @@ def main() -> None:
     )
 
     print("Generando pagos...")
-    payments = generate_payments(rng, base_orders)
+    payments = generate_payments(rng, base_orders, order_items)
     payment_count = write_csv(batch_001 / "payments.csv", PAYMENT_COLUMNS, payments)
 
     print("Generando envíos...")
