@@ -22,5 +22,15 @@ raw:
 	docker compose exec -T db psql -U admin -d ecommerce < sql/02_raw.sql
 
 
+# Ingestar los CSV a RAW
 ingest:
 	python scripts/load_raw.py
+
+# Crear vistas de STAGING
+staging:
+	docker compose exec -T db psql -U admin -d ecommerce < sql/03_staging.sql
+
+# Crear vistas de MARTS
+marts:
+	docker compose exec -T db psql -U admin -d ecommerce < sql/04_marts.sql
+

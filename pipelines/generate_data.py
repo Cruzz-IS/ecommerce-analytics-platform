@@ -98,14 +98,19 @@ def write_csv(path: Path, columns: list[str], rows) -> int:
             count += 1
     return count
 
-
+## funcion para generar los clintes.
 def generate_customers(rng: random.Random, count: int) -> list[dict]:
     rows = []
+    ##calcular el 3% de los clientes para introducir errores intencionales.
     bad_count = round(count * 0.03)
+    ##selecionar las 600 posiciones de los 20,000 clientes para introducir errores intencionales.
+    ##set almacena las 600 posiciones como conjunto.
+    ##la mitad de estas posiciones se seleccionaran para introducir valores nulos en el campo email.
     bad_indices = set(rng.sample(range(count), bad_count))
     null_count = bad_count // 2
     null_indices = set(rng.sample(sorted(bad_indices), null_count))
 
+    ##generacion de los clientes con datos correctos y errores intencionales en el campo email.
     for i in range(1, count + 1):
         first = rng.choice(FIRST_NAMES)
         last = rng.choice(LAST_NAMES)
@@ -142,6 +147,8 @@ def generate_customers(rng: random.Random, count: int) -> list[dict]:
 def generate_products(rng: random.Random, count: int) -> list[dict]:
     rows = []
     category_names = list(CATEGORIES)
+    ##generar variantes de la categoria "Electronics" para introducir errores intencionales en el campo category.
+    ##para practica de normalizacion de datos en SQL.
     electronics_variant_values = ["Electronics", "electronics ", "ELECTRONICS"]
 
     for i in range(1, count + 1):
@@ -153,6 +160,8 @@ def generate_products(rng: random.Random, count: int) -> list[dict]:
         if canonical == "Electronics":
             canonical = "Electronics"
         subcategories = CATEGORIES.get(canonical, ["General"])
+        
+        ##calculos de costos y precios
         unit_cost = Decimal(rng.randint(300, 50000)) / Decimal("100")
         markup = Decimal(rng.randint(115, 220)) / Decimal("100")
         list_price = (unit_cost * markup).quantize(Decimal("0.01"))
@@ -190,6 +199,7 @@ def generate_orders(
             "order_id": f"O{i:09d}",
             "customer_id": customer_id,
             "order_ts": order_ts.strftime("%Y-%m-%d %H:%M:%S"),
+            ## status se elige con pesos para reflejar la distribución realista de estados de pedidos, seleccionando los elementos de la lisa y asignandoles un peso.
             "status": rng.choices(ORDER_STATUSES, weights=STATUS_WEIGHTS, k=1)[0],
             "channel": rng.choice(CHANNELS),
             "promo_code": rng.choice(["", "", "", "WELCOME10", "SUMMER15", "FREESHIP"]),
@@ -209,6 +219,7 @@ def generate_order_items(
     base_orders: list[dict],
     products: list[dict],
 ) -> list[dict]:
+    ##transforma la lista de los productos en un diccionario para acceder a ellos por product_id.
     product_by_id = {p["product_id"]: p for p in products}
     rows = []
     item_number = 1
@@ -220,6 +231,7 @@ def generate_order_items(
             quantity = rng.randint(1, 4)
             list_price = Decimal(product["list_price"])
             discount = rng.choice([0, 0, 0, 5, 10, 15, 20])
+            ##calculo del precio unitario aplicando el descuento al precio de lista y redondeando a dos decimales.
             unit_price = (list_price * (Decimal("1") - Decimal(discount) / 100)).quantize(
                 Decimal("0.01")
             )
@@ -235,7 +247,7 @@ def generate_order_items(
 
     return rows
 
-
+##generar pagos por cada orden, con un tiempo de pago aleatorio y un monto basado en un rango de valores.
 def generate_payments(rng: random.Random, base_orders: list[dict]) -> list[dict]:
     rows = []
     for i, order in enumerate(base_orders, start=1):
@@ -252,7 +264,7 @@ def generate_payments(rng: random.Random, base_orders: list[dict]) -> list[dict]
         })
     return rows
 
-
+## solo se considera elegible para generar envios aquellos pedidos que tengan un estado de "shipped" o "delivered". Se genera un tiempo de envio y entrega aleatorio para cada pedido elegible, y se introduce un pequeño porcentaje de errores intencionales donde la fecha de entrega es anterior a la fecha de envio.
 def generate_shipments(
     rng: random.Random,
     base_orders: list[dict],
@@ -268,6 +280,7 @@ def generate_shipments(
         shipped_ts = order_ts + timedelta(hours=rng.randint(2, 72))
         delivered_ts = shipped_ts + timedelta(hours=rng.randint(12, 120))
 
+        ##aqui es donde se introducen los errores de fechas, de manera intencional
         if i - 1 in bad_indices:
             delivered_ts = shipped_ts - timedelta(hours=rng.randint(1, 48))
 
@@ -288,17 +301,22 @@ def generate_order_updates(
     base_orders: list[dict],
     update_rate: float,
 ) -> list[dict]:
+    ###definir las transiciones de estado de los pedidos.
+    ##### Para hacer cargas incrementales de datos.
     transitions = {
         "pending": "processing",
         "processing": "shipped",
         "shipped": "delivered",
         "delivered": "completed",
     }
+    ##seciencia de cambios posibles de las ordenes, para hacer un seguimiento de los cambios de estado de los pedidos.
     eligible = [o for o in base_orders if o["status"] in transitions]
+    ##seleccionamos las ordenes que pueden avanzar de estado, y calculamos cuantas de estas ordenes se van a actualizar en el segundo lote de datos.
     update_count = min(len(eligible), round(len(base_orders) * update_rate))
     selected = rng.sample(eligible, update_count)
     updates = []
 
+    ##seleccionar ordenes que recibiran una nueva version en el segundo lote de datos, y actualizamos su estado segun las transiciones definidas.
     for original in selected:
         updated = original.copy()
         updated["status"] = transitions[original["status"]]
@@ -309,6 +327,7 @@ def generate_order_updates(
 
 
 def main() -> None:
+    ##configurar el puno de entrada del generardor de datos, para que el usuario pueda especificar la cantidad de pedidos, clientes y productos a generar, asi como la semilla para la reproducibilidad y la tasa de actualizacion para el segundo lote de datos.
     parser = argparse.ArgumentParser(description="Genera CSV sintéticos para e-commerce.")
     parser.add_argument("--orders", type=int, default=100_000, help="Cantidad de pedidos base.")
     parser.add_argument("--customers", type=int, default=20_000, help="Cantidad de clientes.")
@@ -329,6 +348,7 @@ def main() -> None:
     if not 0 <= args.update_rate <= 1:
         parser.error("--update-rate debe estar entre 0 y 1.")
 
+##generador de datos reproducible con la semilla proporcionada, lo que significa que si se ejecuta el script con la misma semilla, se obtendran los mismos datos de salida. Esto nos servira como una para pruebas y desarrollo, ya que permite generar conjuntos de datos consistentes y comparables.
     rng = random.Random(args.seed)
     batch_001 = args.output / "batch_001"
     batch_002 = args.output / "batch_002"
