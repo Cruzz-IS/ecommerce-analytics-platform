@@ -5,17 +5,12 @@ from __future__ import annotations
 import argparse
 import csv
 import logging
-import os
 import sys
-from pathlib import Path
 
 import psycopg
 from psycopg import sql
-from dotenv import load_dotenv
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA_ROOT = ROOT / "data" / "raw"
-LOG_DIR = ROOT / "logs"
+from pipelines.config import LOG_DIR, RAW_DIR, ROOT, db_params
 
 TABLE_COLUMNS = {
     "customers": ["customer_id", "first_name", "last_name", "email", "phone", "city", "state", "country", "signup_date", "acquisition_channel"],
@@ -43,31 +38,19 @@ def setup_logger():
 
 
 def connect():
-    load_dotenv(ROOT / ".env")
-    required = ["PG_USER", "PG_PASSWORD", "PG_DB"]
-    missing = [key for key in required if not os.getenv(key)]
-    if missing:
-        raise RuntimeError("Faltan variables en .env: " + ", ".join(missing))
-    return psycopg.connect(
-        host=os.getenv("PG_HOST", "localhost"),
-        port=os.getenv("PG_PORT", "5432"),
-        user=os.environ["PG_USER"],
-        password=os.environ["PG_PASSWORD"],
-        dbname=os.environ["PG_DB"],
-        connect_timeout=10,
-    )
+    return psycopg.connect(**db_params(), connect_timeout=10)
 
 
 def find_batches(names):
     if names:
-        paths = [(DATA_ROOT / name).resolve() for name in names]
+        paths = [(RAW_DIR / name).resolve() for name in names]
         for path in paths:
-            if path.parent != DATA_ROOT.resolve() or not path.is_dir():
+            if path.parent != RAW_DIR.resolve() or not path.is_dir():
                 raise FileNotFoundError(f"Lote inválido: {path}")
         return paths
-    paths = sorted(p for p in DATA_ROOT.glob("batch_*") if p.is_dir())
+    paths = sorted(p for p in RAW_DIR.glob("batch_*") if p.is_dir())
     if not paths:
-        raise FileNotFoundError(f"No hay directorios batch_* en {DATA_ROOT}")
+        raise FileNotFoundError(f"No hay directorios batch_* en {RAW_DIR}")
     return paths
 
 ##funcion principal para cargar los csv, con parametros de

@@ -13,6 +13,8 @@ from decimal import Decimal
 from pathlib import Path
 from collections import defaultdict
 
+from pipelines.config import RAW_DIR
+
 
 CUSTOMER_COLUMNS = [
     "customer_id", "first_name", "last_name", "email", "phone",
@@ -174,8 +176,8 @@ def generate_products(rng: random.Random, count: int) -> list[dict]:
             "product_id": f"P{i:06d}",
             "product_name":  f"{brand} {subcategory} Model {i:04d}",
             "category": category,
-            "subcategory": subcategory, "brand": brand,
-            "brand": rng.choice(BRANDS),
+            "subcategory": subcategory,
+            "brand": brand,
             "unit_cost": money(unit_cost),
             "list_price": money(list_price),
         })
@@ -188,7 +190,7 @@ def generate_orders(
     customer_ids: list[str],
     start: datetime,
     end: datetime,
-) -> list[dict]:
+) -> tuple[list[dict], list[dict]]:
     rows = []
     orphan_count = round(count * 0.002)
     orphan_indices = set(rng.sample(range(count), orphan_count))
@@ -223,8 +225,6 @@ def generate_order_items(
     base_orders: list[dict],
     products: list[dict],
 ) -> list[dict]:
-    ##transforma la lista de los productos en un diccionario para acceder a ellos por product_id.
-    product_by_id = {p["product_id"]: p for p in products}
     rows = []
     item_number = 1
 
@@ -294,22 +294,17 @@ def generate_shipments(
     bad_count = round(len(delivered_idx) * 0.005)
     bad_indices = set(rng.sample(delivered_idx, bad_count)) if bad_count else set()
 
-    delivered_ts = None
-    if order["status"] == "delivered":
-        delivered_ts = shipped_ts + timedelta(hours=rng.randint(12, 120))
-        if i - 1 in bad_indices:
-            delivered_ts = shipped_ts - timedelta(hours=rng.randint(1, 48))
-    # en el diccionario:
-    "delivered_ts": delivered_ts.strftime("%Y-%m-%d %H:%M:%S") if delivered_ts else "", if bad_count else set()
-
     for i, order in enumerate(shipment_orders, start=1):
         order_ts = datetime.strptime(order["order_ts"], "%Y-%m-%d %H:%M:%S")
         shipped_ts = order_ts + timedelta(hours=rng.randint(2, 72))
-        delivered_ts = shipped_ts + timedelta(hours=rng.randint(12, 120))
 
-        ##aqui es donde se introducen los errores de fechas, de manera intencional
-        if i - 1 in bad_indices:
-            delivered_ts = shipped_ts - timedelta(hours=rng.randint(1, 48))
+        ## un pedido que sigue en 'shipped' todavia no tiene fecha de entrega
+        delivered_ts = None
+        if order["status"] == "delivered":
+            delivered_ts = shipped_ts + timedelta(hours=rng.randint(12, 120))
+            ##aqui es donde se introducen los errores de fechas, de manera intencional
+            if i - 1 in bad_indices:
+                delivered_ts = shipped_ts - timedelta(hours=rng.randint(1, 48))
 
         promised_date = (shipped_ts.date() + timedelta(days=rng.randint(2, 7))).isoformat()
         rows.append({
@@ -317,7 +312,7 @@ def generate_shipments(
             "order_id": order["order_id"],
             "carrier": rng.choice(CARRIERS),
             "shipped_ts": shipped_ts.strftime("%Y-%m-%d %H:%M:%S"),
-            "delivered_ts": delivered_ts.strftime("%Y-%m-%d %H:%M:%S"),
+            "delivered_ts": delivered_ts.strftime("%Y-%m-%d %H:%M:%S") if delivered_ts else "",
             "promised_date": promised_date,
         })
     return rows
@@ -365,8 +360,8 @@ def main() -> None:
         help="Proporción de pedidos base que tendrá actualización en batch_002.",
     )
     parser.add_argument(
-        "--output", type=Path, default=Path("data/raw"),
-        help="Directorio raíz de salida.",
+        "--output", type=Path, default=RAW_DIR,
+        help="Directorio raíz de salida (por defecto: data/raw del proyecto).",
     )
     args = parser.parse_args()
 
