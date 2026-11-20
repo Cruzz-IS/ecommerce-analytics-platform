@@ -1,6 +1,5 @@
-DROP SCHEMA IF EXISTS staging CASCADE;   -- en 03
+DROP SCHEMA IF EXISTS staging CASCADE; 
 CREATE SCHEMA staging;
-
 
 CREATE TABLE  staging.customers AS
 WITH ranked AS (
@@ -9,6 +8,7 @@ WITH ranked AS (
     FROM raw.customers r
 )
 SELECT
+-- NULLIF mas (BTRIM) eliminan los espacios sobrantes al inicio y al final de la cadena y si la cadena es vacia deja la columna como NULL
     NULLIF(BTRIM(customer_id), '') AS customer_id,
     NULLIF(BTRIM(first_name), '') AS first_name,
     NULLIF(BTRIM(last_name), '') AS last_name,
@@ -17,11 +17,15 @@ SELECT
     NULLIF(BTRIM(city), '') AS city,
     NULLIF(BTRIM(state), '') AS state,
     NULLIF(BTRIM(country), '') AS country,
+	--conversion del campo signup_date de TEXT a DATE
     NULLIF(BTRIM(signup_date), '')::DATE AS signup_date,
     LOWER(NULLIF(BTRIM(acquisition_channel), '')) AS acquisition_channel,
-    (LOWER(BTRIM(COALESCE(email, ''))) ~ '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$') AS email_is_valid,
+	--COALESCE reemplaza un valor que es NULL por una cadena vacia ''
+	--expresion regular para validar que el correo sea valido y que la extension final del dominio tenga al menos dos letras
+    (LOWER(BTRIM(COALESCE(email, ''))) ~ '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$') AS email_valido,
     _batch_id, _loaded_at, _source_file
 FROM ranked WHERE rn = 1;
+;
 
 
 CREATE TABLE  staging.products AS
@@ -39,7 +43,7 @@ SELECT
         ELSE INITCAP(BTRIM(category))
     END AS category,
     INITCAP(NULLIF(BTRIM(subcategory), '')) AS subcategory,
-    INITCAP(NULLIF(BTRIM(brand), '')) AS brand,
+    (NULLIF(BTRIM(brand), '')) AS brand,
     NULLIF(BTRIM(unit_cost), '')::NUMERIC(12,2) AS unit_cost,
     NULLIF(BTRIM(list_price), '')::NUMERIC(12,2) AS list_price,
     _batch_id, _loaded_at, _source_file
@@ -114,7 +118,7 @@ WITH ranked AS (
 SELECT
     NULLIF(BTRIM(shipment_id), '') AS shipment_id,
     NULLIF(BTRIM(order_id), '') AS order_id,
-    INITCAP(NULLIF(BTRIM(carrier), '')) AS carrier,
+    NULLIF(BTRIM(carrier), '') AS carrier,
     NULLIF(BTRIM(shipped_ts), '')::TIMESTAMP AS shipped_ts,
     NULLIF(BTRIM(delivered_ts), '')::TIMESTAMP AS delivered_ts,
     NULLIF(BTRIM(promised_date), '')::DATE AS promised_date,

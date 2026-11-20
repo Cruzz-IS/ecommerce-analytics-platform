@@ -1,5 +1,19 @@
 
-.PHONY: up down ps schemas raw
+.PHONY: up down ps schemas raw gen load staging marts bi export pipeline
+
+# Configuracion de PostgreSQL
+PG_USER ?= admin
+PG_DB ?= ecommerce
+
+# Configuracion de generacion de datos
+ORDERS ?= 100000
+CUSTOMERS ?= 20000
+PRODUCTS ?= 500
+SEED ?= 42
+
+# Comando de conexion a PostgreSQL dentro de Docker
+PSQL = docker compose exec -T db psql -v ON_ERROR_STOP=1 -U $(PG_USER) -d $(PG_DB)
+
 
 # Levantar PostgreSQL
 up:
@@ -13,24 +27,41 @@ down:
 ps:
 	docker compose ps
 
+
 # Crear esquemas
 schemas:
-	docker compose exec -T db psql -U admin -d ecommerce < sql/01_schemas.sql
+	$(PSQL) < sql/01_schemas.sql
 
 # Crear tablas RAW
 raw:
-	docker compose exec -T db psql -U admin -d ecommerce < sql/02_raw.sql
+	$(PSQL) < sql/02_raw.sql
 
 
-# Ingestar los CSV a RAW
-ingest:
-	python scripts/load_raw.py
+# Generar datos CSV
+gen:
+	python -m pipelines.generate_data --orders $(ORDERS) --customers $(CUSTOMERS) --products $(PRODUCTS) --seed $(SEED)
+
+# Ingestar los CSV a PostgreSQL RAW
+load:
+	python -m pipelines.load_raw
+
 
 # Crear vistas de STAGING
 staging:
-	docker compose exec -T db psql -U admin -d ecommerce < sql/03_staging.sql
+	$(PSQL) < sql/03_staging.sql
 
-# Crear vistas de MARTS
+# Crear tablas de MARTS
 marts:
-	docker compose exec -T db psql -U admin -d ecommerce < sql/04_marts.sql
+	$(PSQL) < sql/04_marts.sql
 
+# Crear objetos de BI en PostgreSQL
+bi:
+	$(PSQL) < sql/05_bi.sql
+
+# Exportar datos para herramientas BI
+export:
+	python -m pipelines.export_for_bi
+
+
+# Ejecutar el pipeline completo
+pipeline: schemas raw gen load staging marts bi

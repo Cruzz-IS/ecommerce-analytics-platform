@@ -1,5 +1,5 @@
--- Modelo analitico inicial mediante vistas.
-DROP SCHEMA IF EXISTS marts CASCADE;     -- en 04
+-- Modelo analitico inicial mediante tablas
+DROP SCHEMA IF EXISTS marts CASCADE;    
 CREATE SCHEMA marts;
 
 
@@ -54,3 +54,7 @@ SELECT order_date,
 FROM marts.fact_order_items
 WHERE order_date IS NOT NULL
 GROUP BY order_date;
+
+
+ANALYZE marts.dim_customers; ANALYZE marts.dim_products; ANALYZE marts.fact_orders;
+ANALYZE marts.fact_order_items; ANALYZE marts.fact_payments; ANALYZE marts.fact_shipments;
