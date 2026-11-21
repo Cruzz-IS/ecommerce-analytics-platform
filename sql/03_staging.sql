@@ -143,3 +143,15 @@ CREATE INDEX ON staging.payments (order_id);
 CREATE INDEX ON staging.shipments (order_id);
 ANALYZE staging.customers; ANALYZE staging.products; ANALYZE staging.orders;
 ANALYZE staging.order_items; ANALYZE staging.payments; ANALYZE staging.shipments;
+
+
+/*
+validar si hay duplicados 
+
+SELECT order_id, COUNT(*) FROM staging.orders GROUP BY 1 HAVING COUNT(*) > 1;
+-- el conteo debe ser el de raw menos los duplicados
+SELECT COUNT(*) FROM staging.orders;
+SELECT COUNT(DISTINCT order_id) FROM raw.orders;
+-- categorias unicas  deberiamos tener 8
+SELECT DISTINCT category FROM staging.products ORDER BY 1;
+*/
