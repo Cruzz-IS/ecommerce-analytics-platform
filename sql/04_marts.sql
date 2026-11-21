@@ -4,15 +4,15 @@ CREATE SCHEMA marts;
 
 -- Dimensiones 
 CREATE TABLE marts.dim_date AS
-SELECT to_char(d, 'YYYYMMDD')::int           AS date_key,
-       d::date                               AS date,
-       EXTRACT(year FROM d)::int             AS year,
-       EXTRACT(quarter FROM d)::int          AS quarter,
-       EXTRACT(month FROM d)::int            AS month,
-       TO_CHAR(d, 'IW')            AS week_number,    
-       trim(to_char(d, 'Month'))             AS month_name,
-       EXTRACT(isodow FROM d)::int           AS day_of_week,
-       EXTRACT(isodow FROM d) IN (6, 7)      AS is_weekend
+SELECT to_char(d, 'YYYYMMDD')::int AS date_key,
+       d::date AS date,
+       EXTRACT(year FROM d)::int AS year,
+       EXTRACT(quarter FROM d)::int AS quarter,
+       EXTRACT(month FROM d)::int AS month,
+       TO_CHAR(d, 'IW') AS week_number,    
+       trim(to_char(d, 'Month')) AS month_name,
+       EXTRACT(isodow FROM d)::int AS day_of_week,
+       EXTRACT(isodow FROM d) IN (6, 7) AS is_weekend
 FROM generate_series(
        (SELECT date_trunc('year', min(order_ts))::date FROM staging.orders),
        (SELECT (date_trunc('year', max(order_ts)) + interval '1 year' - interval '1 day')::date FROM staging.orders),
@@ -46,12 +46,12 @@ SELECT -1, 'UNKNOWN', 'Desconocido', 'Unknown', NULL, NULL, NULL, NULL;
 CREATE TABLE marts.fact_orders AS
 WITH items AS (
     SELECT oi.order_id,
-           count(*)                                                   AS items_count,
-           sum(oi.quantity)                                           AS units,
-           sum(oi.quantity * p.list_price)                            AS gross_amount,
-           sum(oi.quantity * oi.unit_price)                           AS net_amount,
-           sum(oi.quantity * (p.list_price - oi.unit_price))          AS discount_amount,
-           sum(oi.quantity * (oi.unit_price - p.unit_cost))           AS margin_amount
+           count(*) AS items_count,
+           sum(oi.quantity) AS units,
+           sum(oi.quantity * p.list_price) AS gross_amount,
+           sum(oi.quantity * oi.unit_price) AS net_amount,
+           sum(oi.quantity * (p.list_price - oi.unit_price)) AS discount_amount,
+           sum(oi.quantity * (oi.unit_price - p.unit_cost)) AS margin_amount
     FROM staging.order_items oi
     LEFT JOIN staging.products p ON p.product_id = oi.product_id
     GROUP BY oi.order_id
@@ -62,29 +62,30 @@ pay AS (
 )
 SELECT row_number() OVER (ORDER BY o.order_id)::int AS order_key,
        o.order_id,
-       COALESCE(dc.customer_key, -1)                AS customer_key,
-       to_char(o.order_ts, 'YYYYMMDD')::int         AS order_date_key,
+       COALESCE(dc.customer_key, -1) AS customer_key,
+       to_char(o.order_ts, 'YYYYMMDD')::int AS order_date_key,
        o.order_ts,
-       o.order_ts::date                             AS order_date,
+       o.order_ts::date AS order_date,
        o.status, o.channel, o.promo_code,
-       COALESCE(i.items_count, 0)::int              AS items_count,
-       COALESCE(i.units, 0)::int                    AS units,
-       COALESCE(i.gross_amount, 0)::numeric(14,2)     AS gross_amount,
-       COALESCE(i.net_amount, 0)::numeric(14,2)       AS net_amount,
+       COALESCE(i.items_count, 0)::int AS items_count,
+       COALESCE(i.units, 0)::int AS units,
+       COALESCE(i.gross_amount, 0)::numeric(14,2) AS gross_amount,
+       COALESCE(i.net_amount, 0)::numeric(14,2) AS net_amount,
        COALESCE(i.discount_amount, 0)::numeric(14,2)  AS discount_amount,
-       COALESCE(i.margin_amount, 0)::numeric(14,2)    AS margin_amount,
-       COALESCE(pay.paid_amount, 0)::numeric(14,2)    AS paid_amount,
+       COALESCE(i.margin_amount, 0)::numeric(14,2) AS margin_amount,
+       COALESCE(pay.paid_amount, 0)::numeric(14,2) AS paid_amount,
        CASE WHEN s.delivery_chronology_valid IS FALSE THEN NULL
-            ELSE s.shipped_ts::date - o.order_ts::date END                              AS days_to_ship,
+            ELSE s.shipped_ts::date - o.order_ts::date END AS days_to_ship,
        CASE WHEN s.delivery_chronology_valid IS TRUE
             THEN round(EXTRACT(EPOCH FROM (s.delivered_ts - s.shipped_ts)) / 86400, 2) END AS days_to_deliver,
        CASE WHEN s.delivery_chronology_valid IS TRUE
-            THEN s.delivered_ts::date <= s.promised_date END                            AS delivered_on_time
+            THEN s.delivered_ts::date <= s.promised_date END AS delivered_on_time
 FROM staging.orders o
 LEFT JOIN marts.dim_customer dc ON dc.customer_id = o.customer_id
-LEFT JOIN items i               ON i.order_id = o.order_id
-LEFT JOIN pay                   ON pay.order_id = o.order_id
-LEFT JOIN staging.shipments s   ON s.order_id = o.order_id;
+LEFT JOIN items i ON (i.order_id = o.order_id)
+LEFT JOIN pay ON (pay.order_id = o.order_id)
+LEFT JOIN staging.shipments s ON (s.order_id = o.order_id)
+;
 
 -- CREATE TABLE marts.fact_orders AS
 -- SELECT order_id, customer_id, order_ts, order_ts::DATE AS order_date,
@@ -98,21 +99,21 @@ SELECT row_number() OVER (ORDER BY oi.order_item_id)::int AS order_item_key,
        fo.order_key,
        oi.order_id,                       -- dimensión degenerada, para trazabilidad
        fo.customer_key,
-       COALESCE(dp.product_key, -1)       AS product_key,
+       COALESCE(dp.product_key, -1) AS product_key,
        fo.order_date_key,
        fo.order_date,
        oi.quantity, oi.unit_price, oi.discount_pct,
-       (oi.quantity * dp.list_price)::numeric(14,2)                   AS gross_amount,
-       (oi.quantity * oi.unit_price)::numeric(14,2)                   AS net_amount,
+       (oi.quantity * dp.list_price)::numeric(14,2) AS gross_amount,
+       (oi.quantity * oi.unit_price)::numeric(14,2) AS net_amount,
        (oi.quantity * (dp.list_price - oi.unit_price))::numeric(14,2) AS discount_amount,
-       (oi.quantity * dp.unit_cost)::numeric(14,2)                    AS cost_amount,
+       (oi.quantity * dp.unit_cost)::numeric(14,2) AS cost_amount,
        (oi.quantity * (oi.unit_price - dp.unit_cost))::numeric(14,2)  AS margin_amount
 FROM staging.order_items oi
-JOIN marts.fact_orders fo        ON fo.order_id = oi.order_id
-LEFT JOIN marts.dim_product dp   ON dp.product_id = oi.product_id;
+JOIN marts.fact_orders fo ON (fo.order_id = oi.order_id)
+LEFT JOIN marts.dim_product dp ON (dp.product_id = oi.product_id)
+;
 
 -- un pago
-
 CREATE TABLE marts.fact_payments AS
 SELECT row_number() OVER (ORDER BY p.payment_id)::int AS payment_key,
        p.payment_id, fo.order_key, p.order_id, p.method, p.amount,

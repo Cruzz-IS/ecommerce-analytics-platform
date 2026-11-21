@@ -6,7 +6,7 @@ SELECT
     o.order_date,
     date_trunc('month', o.order_date)::date AS order_month,
     o.status,
-    (o.status <> 'cancelled')               AS is_valid_sale,
+    (o.status <> 'cancelled') AS is_valid_sale,
     o.channel,
    (c.customer_key <> -1) AS customer_exists,
     c.customer_id, c.city, c.country, c.acquisition_channel,
@@ -15,7 +15,7 @@ SELECT
     i.gross_amount,
     i.discount_amount,
     i.net_amount,
-    (i.quantity * p.unit_cost)::numeric(14,2)                 AS cost_amount,
+    (i.quantity * p.unit_cost)::numeric(14,2) AS cost_amount,
     (i.net_amount - i.quantity * p.unit_cost)::numeric(14,2)  AS margin_amount
 FROM marts.fact_order_items i
 JOIN marts.fact_orders o   ON o.order_key    = i.order_key
@@ -25,10 +25,10 @@ JOIN marts.dim_product p   ON p.product_key  = i.product_key;
 DROP VIEW IF EXISTS bi.kpi_summary CASCADE;
 CREATE VIEW bi.kpi_summary AS
 WITH sales AS (
-    SELECT count(DISTINCT order_id)                                    AS orders,
+    SELECT count(DISTINCT order_id) AS orders,
            count(DISTINCT customer_id) FILTER (WHERE customer_exists)  AS customers,
-           sum(net_amount)                                             AS net_sales,
-           sum(margin_amount)                                          AS margin
+           sum(net_amount) AS net_sales,
+           sum(margin_amount) AS margin
     FROM bi.sales_detail WHERE is_valid_sale
 ),
 cancel AS (
@@ -42,7 +42,64 @@ delivery AS (
     WHERE delivery_chronology_valid IS NOT FALSE
 )
 SELECT s.net_sales, s.orders, s.customers,
-       round(s.net_sales / s.orders, 2)          AS avg_order_value,
-       round(100.0 * s.margin / s.net_sales, 2)  AS margin_pct,
+       round(s.net_sales / s.orders, 2) AS avg_order_value,
+       round(100.0 * s.margin / s.net_sales, 2) AS margin_pct,
        d.on_time_pct, c.cancellation_rate_pct
 FROM sales s, cancel c, delivery d;
+
+
+---NUEVAS METRICAS PARA EL DASHBOARD DE BI
+DROP VIEW IF EXISTS bi.sales_monthly CASCADE;
+CREATE VIEW bi.sales_monthly AS
+SELECT
+    i.order_item_id,
+    i.order_id,
+    o.order_date,
+    date_trunc('month', o.order_date)::date AS order_month,
+    o.status,
+    (o.status <> 'cancelled') AS is_valid_sale,
+    o.channel,
+   (c.customer_key <> -1) AS customer_exists,
+    c.customer_id, c.city, c.country, c.acquisition_channel,
+    p.product_id, p.product_name, p.category, p.subcategory, p.brand,
+    i.quantity,
+    i.gross_amount,
+    i.discount_amount,
+    i.net_amount,
+    (i.quantity * p.unit_cost)::numeric(14,2) AS cost_amount,
+    (i.net_amount - i.quantity * p.unit_cost)::numeric(14,2)  AS margin_amount,
+	LAG(i.net_amount,1,0) OVER (ORDER BY date_trunc('month', o.order_date)) AS anterior
+FROM marts.fact_order_items i
+JOIN marts.fact_orders o   ON o.order_key    = i.order_key
+JOIN marts.dim_customer c  ON c.customer_key = i.customer_key
+JOIN marts.dim_product p   ON p.product_key  = i.product_key;
+
+
+
+
+DROP VIEW IF EXISTS bi.sales_by_category CASCADE;
+CREATE VIEW bi.sales_by_category AS
+SELECT A.CATEGORY, sum(sum(A.net_amount)) OVER () AS TOTAL FROM (
+SELECT
+    i.order_item_id,
+    i.order_id,
+    o.order_date,
+    date_trunc('month', o.order_date)::date AS order_month,
+    o.status,
+    (o.status <> 'cancelled') AS is_valid_sale,
+    o.channel,
+   (c.customer_key <> -1) AS customer_exists,
+    c.customer_id, c.city, c.country, c.acquisition_channel,
+    p.product_id, p.product_name, p.category, p.subcategory, p.brand,
+    i.quantity,
+    i.gross_amount,
+    i.discount_amount,
+    i.net_amount,
+    (i.quantity * p.unit_cost)::numeric(14,2) AS cost_amount,
+    (i.net_amount - i.quantity * p.unit_cost)::numeric(14,2)  AS margin_amount
+FROM marts.fact_order_items i
+JOIN marts.fact_orders o   ON o.order_key    = i.order_key
+JOIN marts.dim_customer c  ON c.customer_key = i.customer_key
+JOIN marts.dim_product p   ON p.product_key  = i.product_key
+) A
+group by A.category;
