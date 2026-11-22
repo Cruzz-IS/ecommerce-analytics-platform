@@ -42,6 +42,7 @@ SELECT
         WHEN NULLIF(BTRIM(category), '') IS NULL THEN 'Unknown'
         ELSE INITCAP(BTRIM(category))
     END AS category,
+    --INITCAP convierte la primera letra de cada palabra en mayuscula y el resto en minuscula
     INITCAP(NULLIF(BTRIM(subcategory), '')) AS subcategory,
     (NULLIF(BTRIM(brand), '')) AS brand,
     NULLIF(BTRIM(unit_cost), '')::NUMERIC(12,2) AS unit_cost,
