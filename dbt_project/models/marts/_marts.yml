@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Un registro por dia, desde el primer al ultimo año de pedidos."
+    columns:
+      - name: date_key
+        description: "Fecha como entero AAAAMMDD."
+        data_tests: [unique, not_null]
+
+  - name: dim_customer
+    description: "Un registro por cliente. La clave -1 es el miembro 'Desconocido'."
+    columns:
+      - name: customer_key
+        data_tests: [unique, not_null]
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: email_is_valid
+        description: "Defecto conocido: ~3% de correos invalidos"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [true]
+                quote: false
+              config:
+                severity: warn
+                where: "customer_key <> -1"
+
+  - name: dim_product
+    description: "Un registro por producto, la clave -1 es el miembro 'Desconocido'."
+    columns:
+      - name: product_key
+        data_tests: [unique, not_null]
+      - name: product_id
+        data_tests: [unique, not_null]
+
+  - name: fact_orders
+    description: "un pedido, con importes y tiempos de entrega ya calculados."
+    columns:
+      - name: order_key
+        data_tests: [unique, not_null]
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: customer_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+      - name: order_date_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [pending, processing, shipped, delivered, completed, cancelled]
+
+  - name: fact_order_items
+    description: " un item dentro de un pedido."
+    columns:
+      - name: order_item_key
+        data_tests: [unique, not_null]
+      - name: order_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_orders')
+                field: order_key
+      - name: product_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_key
+      - name: customer_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+
+  - name: fact_payments
+    description: "un pago."
+    columns:
+      - name: payment_key
+        data_tests: [unique, not_null]
+      - name: order_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_orders')
+                field: order_key
+
+  - name: fact_shipments
+    description: "un envio."
+    columns:
+      - name: shipment_key
+        data_tests: [unique, not_null]
+      - name: order_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('fact_orders')
+                field: order_key
+      - name: delivery_chronology_valid
+        description: "Defecto conocido: ~0.5% de entregas anteriores al envio del pedido."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [true]
+                quote: false
+              config:
+                severity: warn
+                where: "delivery_chronology_valid is not null"
