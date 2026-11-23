@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Un registro por cliente (ultima version o batch), con tipos correctos"
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: email_is_valid
+        description: "FALSE si el correo es nulo o tiene formato invalido"
+
+  - name: stg_products
+    description: "Un registro por producto, con categoria normalizada"
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]
+
+  - name: stg_orders
+    description: "Un registro por pedido: gana la version del lote mas reciente (batch_id mas alto)"
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [pending, processing, shipped, delivered, completed, cancelled]
+      - name: channel
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [web, mobile_app, store, marketplace]
+
+  - name: stg_order_items
+    description: "Un registro por item de pedido"
+    columns:
+      - name: order_item_id
+        data_tests: [unique, not_null]
+
+  - name: stg_payments
+    description: "Un registro por pago"
+    columns:
+      - name: payment_id
+        data_tests: [unique, not_null]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [paid, pending, failed, refunded]
+      - name: method
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [credit_card, debit_card, bank_transfer, cash_on_delivery, wallet]
+
+  - name: stg_shipments
+    description: "Un registro por envio"
+    columns:
+      - name: shipment_id
+        data_tests: [unique, not_null]
