@@ -8,6 +8,7 @@ SELECT
     o.status,
     (o.status <> 'cancelled') AS is_valid_sale,
     o.channel,
+    c.customer_key
    (c.customer_key <> -1) AS customer_exists,
     c.customer_id, c.city, c.country, c.acquisition_channel,
     p.product_id, p.product_name, p.category, p.subcategory, p.brand,
@@ -346,3 +347,12 @@ WHERE product_key = -1;
  --SELECT * FROM bi.cohort_retention ORDER BY cohort_month, month_n;
  --SELECT * FROM bi.delivery_sla ORDER BY shipment_month, carrier;
  --SELECT * FROM bi.data_quality ORDER BY issue_name;
+
+
+ --comprobar las vistas existentes
+
+-- SELECT table_name
+-- FROM information_schema.views
+-- WHERE table_schema = 'bi'
+-- ORDER BY table_name;
+
